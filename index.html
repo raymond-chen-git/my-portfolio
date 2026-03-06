@@ -21,7 +21,7 @@
         .hero p { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
         .btn { display: inline-block; padding: 12px 24px; background: #000; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; }
         
-        /* 平面作品集網格 */
+        /* 平面作品集網格 (Behance 風格) */
         .portfolio-section { padding: 80px 5%; }
         .portfolio-section h2 { margin-bottom: 40px; text-align: center; font-size: 2rem; }
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
@@ -34,6 +34,44 @@
         .project-info h3 { font-size: 1.2rem; margin-bottom: 5px; }
         .project-info p { color: #888; font-size: 0.9rem; }
         
+        /* --- [新增] Wix 改版對比區塊 (Wix Redesign Showcase) --- */
+        .redesign-section { padding: 80px 5%; background: #fff; text-align: center; }
+        .redesign-section h2 { font-size: 2rem; margin-bottom: 10px; }
+        .redesign-section p { color: #666; margin-bottom: 50px; }
+
+        /* 互動對比容器 (使用 Flex 左右排列) */
+        .comparison-container { display: flex; justify-content: center; align-items: flex-start; gap: 3%; max-width: 1000px; margin: 0 auto; padding-bottom: 20px; }
+
+        /* A4 比例方框 (關鍵特效：transition、cursor、user-select) */
+        .comparison-box { position: relative; width: 45%; max-width: 400px; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 20px rgba(0,0,0,0.1); cursor: pointer; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); user-select: none; -webkit-user-select: none; }
+
+        /* 實作 A4 比例 (210:297 = 1:1.414) */
+        .a4-ratio-wrapper { position: relative; width: 100%; padding-bottom: 141.4%; /* A4 高度比例 */ height: 0; background: #e0e0e0; }
+        
+        .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; /* 讓長圖填滿方框 */ display: block; transition: filter 0.5s ease; }
+
+        /* 標籤設計 */
+        .comparison-label { position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.7); color: #fff; padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; z-index: 10; pointer-events: none; transition: opacity 0.5s ease; }
+        
+        /* ----- 狀態定義 ----- */
+        
+        /* 1. 預設狀態 (變暗、模糊、縮小) */
+        .comparison-box { transform: scale(0.95); opacity: 0.9; }
+        .comparison-img { filter: grayscale(100%) brightness(50%) blur(4px); /* 灰色、變暗、模糊 */ }
+
+        /* 2. 懸停狀態 (輕微變清楚，增加探索感) */
+        .comparison-box:hover .comparison-img { filter: grayscale(50%) brightness(70%) blur(2px); }
+
+        /* 3. 被點擊選中狀態 (★ 關鍵 ★) */
+        .comparison-box.active { transform: scale(1.05); /* 放大 */ opacity: 1; z-index: 20; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        
+        /* 選中時圖片恢復正常 */
+        .comparison-box.active .comparison-img { filter: grayscale(0%) brightness(100%) blur(0px); }
+
+        /* 手機版適應 (垂直排列) */
+        @media (max-width: 768px) { .comparison-container { flex-direction: column; align-items: center; gap: 30px; } .comparison-box { width: 80%; } }
+        /* ---------------------------------------------------- */
+
         /* 互動網頁專案區塊 */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
         .interactive-section h2 { margin-bottom: 10px; font-size: 2rem; }
@@ -61,7 +99,8 @@
     <nav>
         <div class="logo">俞函's Portfolio.</div>
         <ul class="nav-links">
-            <li><a href="#work">平面設計</a></li>
+            <li><a href="#work">平面作品</a></li>
+            <li><a href="#wix-redesign">網頁改版</a></li>
             <li><a href="#interactive">網頁專案</a></li>
             <li><a href="#about">關於我</a></li>
         </ul>
@@ -70,32 +109,49 @@
     <header class="hero">
         <h1>嗨，我是俞函 👋</h1>
         <p>專注於品牌識別與視覺包裝設計，並能以 AI 輔助網頁開發的跨界設計師。</p>
-        <a href="#interactive" class="btn">體驗網頁專案</a>
+        <a href="#wix-redesign" class="btn">查看網頁改版案</a>
     </header>
 
+    <section id="wix-redesign" class="redesign-section">
+        <h2>Wix 網頁形象改版案</h2>
+        <p>以下是我為公司重新規劃的網頁視覺，您可以點擊圖片切換查看新舊版對比：</p>
+        
+        <div class="comparison-container">
+            <div class="comparison-box" onclick="toggleComparison(this)">
+                <div class="comparison-label">Before / 修改前</div>
+                <div class="a4-ratio-wrapper">
+                    <img src="https://drive.google.com/uc?export=view&id=這裡貼上你整理好的Before圖的ID" alt="修改前舊網頁" class="project-image comparison-img">
+                </div>
+            </div>
+            
+            <div class="comparison-box" onclick="toggleComparison(this)">
+                <div class="comparison-label">After / 修改後</div>
+                <div class="a4-ratio-wrapper">
+                    <img src="https://drive.google.com/uc?export=view&id=這裡貼上你整理好的After圖的ID" alt="修改後新網頁" class="project-image comparison-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="work" class="portfolio-section">
-        <h2>平面視覺設計</h2>
+        <h2>其他平面視覺設計</h2>
         <div class="portfolio-grid" id="portfolio-grid"></div>
     </section>
 
     <section id="interactive" class="interactive-section">
         <h2>UI/UX 與 AI 網頁互動專案</h2>
         <p>以下是我運用 AI 輔助開發的實用網頁工具，歡迎直接點擊按鈕切換體驗：</p>
-
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab(event, 'accounting')">💰 AI 記帳程式</button>
             <button class="tab-btn" onclick="openTab(event, 'lottery')">🎄 聖誕抽獎活動</button>
             <button class="tab-btn" onclick="openTab(event, 'aigc')">📖 AIGC 學習講義</button>
         </div>
-
         <div id="accounting" class="tab-content active">
             <iframe src="https://raymond-chen-git.github.io/my-family-money/demo/" title="AI 記帳程式 展示版"></iframe>
         </div>
-
         <div id="lottery" class="tab-content">
             <iframe src="https://raymond-chen-git.github.io/Xmas-slot-game/" title="聖誕抽獎活動"></iframe>
         </div>
-
         <div id="aigc" class="tab-content">
             <iframe src="https://3li3long.github.io/ai-cert-study/" title="AIGC 學習講義"></iframe>
         </div>
@@ -113,14 +169,25 @@
     </footer>
 
     <script>
+        // --- [新增] Wix 對比區切換邏輯 ---
+        function toggleComparison(selectedBox) {
+            // 如果點擊的是已經選中的，不做任何事
+            if (selectedBox.classList.contains('active')) return;
+            
+            // 找到該區塊裡所有的方框
+            const container = selectedBox.closest('.comparison-container');
+            const boxes = container.querySelectorAll('.comparison-box');
+            
+            // 清除所有方框的 active 狀態
+            boxes.forEach(box => box.classList.remove('active'));
+            
+            // 為被點擊的方框加入 active 狀態
+            selectedBox.classList.add('active');
+        }
+
         // 平面作品資料庫 (抓 Google Drive 圖片)
         const projectsData = [
-            {
-                title: "旅用盥洗包說明設計",
-                category: "排版與包裝設計",
-                driveId: "1Tc-if0now_3eBUmt1Letbk0GoFnPX3fX" 
-            }
-            // 之後有新作品，只要複製上面這段，貼在下面換上新的 driveId 就可以了！
+            { title: "旅用盥洗包說明設計", category: "排版與包裝設計", driveId: "1Tc-if0now_3eBUmt1Letbk0GoFnPX3fX" }
         ];
 
         const grid = document.getElementById('portfolio-grid');
@@ -133,21 +200,16 @@
                         <h3>${item.title}</h3>
                         <p>${item.category}</p>
                     </div>
-                </div>
-            `;
+                </div>`;
         });
 
         // 網頁頁籤切換邏輯
         function openTab(evt, tabName) {
             let i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
+            for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
             tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
+            for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
