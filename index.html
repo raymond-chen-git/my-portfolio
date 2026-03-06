@@ -35,16 +35,15 @@
         .project-info h3 { font-size: 1.2rem; margin-bottom: 5px; }
         .project-info p { color: #888; font-size: 0.9rem; }
         
-        /* --- Wix 改版特效區塊 --- */
+        /* --- Wix 改版特效區塊 (3D 轉盤) --- */
         .redesign-section { padding: 80px 0; background: #fff; text-align: center; overflow: hidden; }
         .redesign-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .redesign-section p { color: #666; margin-bottom: 30px; }
 
-        /* 轉盤容器與 Swiper 基礎設定 */
         .redesign-showcase-container { width: 100%; max-width: 1000px; margin: 0 auto; position: relative; }
         .swiper-redesign { width: 100%; padding: 40px 0 60px 0; }
         
-        .swiper-slide { 
+        .swiper-slide-wix { 
             width: 340px !important; 
             height: auto; 
             display: flex; 
@@ -53,26 +52,59 @@
             background-color: transparent !important;
         }
 
-        @media (max-width: 768px) {
-            .swiper-slide { width: 260px !important; }
-        }
+        @media (max-width: 768px) { .swiper-slide-wix { width: 260px !important; } }
 
-        /* A4 方框設定 */
         .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); user-select: none; -webkit-user-select: none; transition: all 0.5s ease; }
-        
         .a4-ratio-wrapper { position: relative; width: 100%; padding-bottom: 141.4%; height: 0; background-color: #f0f0f0; }
         
         .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
         .comparison-label { position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.8); color: #fff; padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; z-index: 10; }
         
-        /* 狀態切換 */
         .comparison-box { filter: grayscale(80%) brightness(60%) blur(3px); transform: scale(0.9); opacity: 0.8; }
         .swiper-slide-active .comparison-box { filter: grayscale(0%) brightness(100%) blur(0px); transform: scale(1.05); opacity: 1; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
         
         .swiper-button-next, .swiper-button-prev { color: #333; }
-        .swiper-pagination-bullet-active { background: #333; }
+        .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
 
-        /* 互動網頁專案區塊 */
+        /* --- [新增] SNS 社群行銷區塊 (手機 Mockup) --- */
+        .sns-section { padding: 80px 5%; background: #222; color: #fff; text-align: center; }
+        .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
+        .sns-section p { color: #aaa; margin-bottom: 40px; }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            border: 14px solid #111;
+            border-radius: 40px;
+            margin: 0 auto;
+            position: relative;
+            background: #fff;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #111;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            z-index: 10;
+        }
+
+        .swiper-sns { width: 100%; height: 100%; }
+        .swiper-sns .swiper-slide { display: flex; justify-content: center; align-items: center; background: #333; color: #777; font-weight: bold; }
+        .swiper-sns img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+        
+        .swiper-sns .swiper-pagination-bullet { background: #fff; opacity: 0.4; }
+        .swiper-sns .swiper-pagination-bullet-active { background: #fff; opacity: 1; }
+
+        /* --- Web App 互動專案區塊 --- */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
         .interactive-section h2 { margin-bottom: 10px; font-size: 2rem; }
         .interactive-section p { margin-bottom: 30px; color: #666; }
@@ -82,6 +114,8 @@
         .tab-content { display: none; width: 100%; max-width: 900px; margin: 0 auto; height: 650px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid #fff; background: #fff;}
         .tab-content.active { display: block; }
         iframe { width: 100%; height: 100%; border: none; }
+        
+        /* Footer */
         .about-section { padding: 80px 5%; background: #fff; text-align: center; }
         footer { text-align: center; padding: 60px 20px; background: #222; color: #fff; }
         footer p { color: #aaa; margin-top: 10px;}
@@ -93,8 +127,9 @@
     <nav>
         <div class="logo">Raymond's Portfolio.</div>
         <ul class="nav-links">
-            <li><a href="#work">平面作品</a></li>
             <li><a href="#wix-redesign">網頁改版</a></li>
+            <li><a href="#sns-design">社群與 UI</a></li>
+            <li><a href="#work">平面作品</a></li>
             <li><a href="#interactive">網頁專案</a></li>
             <li><a href="#about">關於我</a></li>
         </ul>
@@ -114,7 +149,7 @@
             <div class="swiper swiper-redesign">
                 <div class="swiper-wrapper">
                     
-                    <div class="swiper-slide">
+                    <div class="swiper-slide swiper-slide-wix">
                         <div class="comparison-box">
                             <div class="comparison-label">Before / 修改前</div>
                             <div class="a4-ratio-wrapper">
@@ -123,7 +158,7 @@
                         </div>
                     </div>
                     
-                    <div class="swiper-slide">
+                    <div class="swiper-slide swiper-slide-wix">
                         <div class="comparison-box">
                             <div class="comparison-label">After / 修改後</div>
                             <div class="a4-ratio-wrapper">
@@ -135,6 +170,32 @@
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sns-design" class="sns-section">
+        <h2>社群媒體與 LINE@ 視覺企劃</h2>
+        <p>模擬真實手機瀏覽情境，請左右滑動螢幕查看不同的社群貼文與選單設計：</p>
+        
+        <div class="phone-mockup">
+            <div class="swiper swiper-sns">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        [ LINE@ 選單設計圖 ]
+                    </div>
+                    
+                    <div class="swiper-slide">
+                        [ IG 貼文設計圖 ]
+                    </div>
+
+                    <div class="swiper-slide">
+                        [ FB 廣告設計圖 ]
+                    </div>
+
+                </div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -178,7 +239,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        // 平面作品資料庫
+        // --- 1. 平面作品資料庫自動生成 ---
         const projectsData = [
             { title: "旅用盥洗包說明設計", category: "排版與包裝設計", driveId: "1Tc-if0now_3eBUmt1Letbk0GoFnPX3fX" }
         ];
@@ -196,7 +257,7 @@
                 </div>`;
         });
 
-        // 網頁頁籤切換邏輯
+        // --- 2. 網頁頁籤切換邏輯 (Web App 區塊) ---
         function openTab(evt, tabName) {
             let i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
@@ -207,15 +268,16 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // 初始化 Swiper 3D 堆疊轉盤
+        // --- 3. 初始化所有 Swiper 輪播特效 ---
         document.addEventListener('DOMContentLoaded', function () {
-            const swiper = new Swiper('.swiper-redesign', {
+            
+            // A. Wix 網頁改版 (3D 堆疊轉盤)
+            const swiperWix = new Swiper('.swiper-redesign', {
                 effect: 'coverflow',
                 grabCursor: true,   
                 centeredSlides: true, 
                 slidesPerView: 'auto', 
                 initialSlide: 1, 
-                
                 coverflowEffect: {
                     rotate: 40,      
                     stretch: 0,     
@@ -223,16 +285,31 @@
                     modifier: 1,    
                     slideShadows: true, 
                 },
-                
                 navigation: { 
                     nextEl: '.swiper-button-next', 
                     prevEl: '.swiper-button-prev' 
                 },
                 pagination: { 
-                    el: '.swiper-pagination', 
+                    el: '.swiper-redesign .swiper-pagination', 
                     clickable: true 
                 }
             });
+
+            // B. 手機 SNS 模擬器 (平移滑動 + 自動輪播)
+            const swiperSns = new Swiper('.swiper-sns', {
+                grabCursor: true,
+                spaceBetween: 0,
+                loop: true, // 讓它可以無限循環滑動
+                autoplay: {
+                    delay: 3000, // 每 3 秒自動切換
+                    disableOnInteraction: false, // 點擊後依然繼續自動播放
+                },
+                pagination: {
+                    el: '.swiper-sns .swiper-pagination',
+                    clickable: true,
+                },
+            });
+
         });
     </script>
 </body>
