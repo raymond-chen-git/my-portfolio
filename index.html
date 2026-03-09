@@ -54,7 +54,7 @@
 
         @media (max-width: 768px) { .swiper-slide-wix { width: 260px !important; } }
 
-        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); user-select: none; -webkit-user-drag: none; transition: all 0.5s ease; }
+        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); user-select: none; -webkit-user-select: none; transition: all 0.5s ease; }
         .a4-ratio-wrapper { position: relative; width: 100%; padding-bottom: 141.4%; height: 0; background-color: #f0f0f0; }
         
         .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
@@ -66,39 +66,75 @@
         .swiper-button-next, .swiper-button-prev { color: #333; }
         .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
 
-        /* --- [新增/修改] SNS 社群行銷區塊 (★ 背景改為亮色 ★) --- */
+        /* --- SNS 社群行銷區塊 (★ 背景改為亮色 ★) --- */
         .sns-section { 
             padding: 80px 5%; 
-            background: #f9fafb; /* ★ 改為極淺的亮灰色 ★ */
-            color: #333; /* 文字改為深色 */
+            background: #f9fafb; 
+            color: #333; 
             text-align: center; 
         }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
-        .sns-section p { color: #666; margin-bottom: 40px; } /* 描述文字顏色調淡 */
+        .sns-section p { color: #666; margin-bottom: 40px; }
 
+        /* --- [新增/修改] 升級為髮絲紋金屬宇宙橘外觀 --- */
         .phone-mockup {
             width: 300px;
             height: 600px;
-            border: 14px solid #111; /* 這個邊框會在行動二裡修改 */
-            border-radius: 40px;
+            
+            /* ★ [重點] 金屬髮絲紋核心 CSS (髮絲紋模擬漸層 + 宇宙橘主色) ★ */
+            background-color: #fff; /* 手機內部維持白色 */
+            border: 14px solid #111; /* 這個邊框會在後面被偽元素覆蓋成金屬材質 */
+            
+            border-radius: 46px; /* 更圓潤的機身 */
             margin: 0 auto;
             position: relative;
-            background: #fff;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* ★ 調淡陰影，更適合亮色背景 ★ */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
             overflow: hidden;
+            
+            /* ★ 利用伪元素實現金屬邊框與髮絲紋紋理 ★ */
+            z-index: 1;
         }
 
+        /* 手機外部金屬拉絲邊框與宇宙橘色光澤 */
+        .phone-mockup::after {
+            content: '';
+            position: absolute;
+            top: -14px; left: -14px; right: -14px; bottom: -14px; /* 覆蓋原本的邊框位置 */
+            
+            /* ★ [重點] 多重線性漸層模擬金屬拉絲紋理與光影 ★ */
+            background-image: 
+                linear-gradient(90deg, #A25D1D 0%, #E67E22 10%, #FF9F43 30%, #E67E22 50%, #A25D1D 70%, #FF9F43 90%, #A25D1D 100%), /* 金屬光影漸層 */
+                repeating-linear-gradient(0deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1) 1px, transparent 1px, transparent 2px), /* ★ 超細微拉絲紋理 (微光雜訊) ★ */
+                repeating-linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.1) 1px, transparent 1px, transparent 2px); /* 交叉紋理，增加細節 */
+            
+            background-blend-mode: overlay, normal; /* 讓光影與拉絲紋理融合 */
+            
+            border-radius: 46px;
+            z-index: -2; /* 放在手機內部白色的後面 */
+            pointer-events: none;
+        }
+
+        /* ★ iPhone 17 Pro 特有的超細緻金屬切邊 ★ */
         .phone-mockup::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border: 1.5px solid rgba(162, 93, 29, 0.6); /* 超細的深橘色切邊 */
+            border-radius: 32px; /* 內部圓角 */
+            z-index: 0; /* 放在白色手機內部的前面 */
+            pointer-events: none;
+        }
+
+        /* ★ [修改] 將原本的瀏海改為細緻的「動態島 (Dynamic Island)」 ★ */
+        .dynamic-island {
+            position: absolute;
+            top: 14px; 
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 25px;
-            background: #111;
-            border-bottom-left-radius: 16px;
-            border-bottom-right-radius: 16px;
+            width: 80px; /* 更細緻的膠囊狀 */
+            height: 16px;
+            background: #000;
+            border-radius: 20px; /* 圓角膠囊 */
             z-index: 10;
         }
 
@@ -106,7 +142,6 @@
         .swiper-sns .swiper-slide { display: flex; justify-content: center; align-items: center; background: #eee; color: #777; font-weight: bold; }
         .swiper-sns img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
         
-        /* ★ 圓點導覽列也調成適合亮色背景的深色 ★ */
         .swiper-sns .swiper-pagination-bullet { background: #000; opacity: 0.2; }
         .swiper-sns .swiper-pagination-bullet-active { background: #000; opacity: 0.8; }
 
@@ -186,6 +221,8 @@
         <p>模擬真實手機瀏覽情境，請左右滑動螢幕查看不同的社群貼文與選單設計：</p>
         
         <div class="phone-mockup">
+            <div class="dynamic-island"></div>
+            
             <div class="swiper swiper-sns">
                 <div class="swiper-wrapper">
                     
