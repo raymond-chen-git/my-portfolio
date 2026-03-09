@@ -54,7 +54,7 @@
 
         @media (max-width: 768px) { .swiper-slide-wix { width: 260px !important; } }
 
-        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); user-select: none; -webkit-user-select: none; transition: all 0.5s ease; }
+        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); user-select: none; -webkit-user-drag: none; transition: all 0.5s ease; }
         .a4-ratio-wrapper { position: relative; width: 100%; padding-bottom: 141.4%; height: 0; background-color: #f0f0f0; }
         
         .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
@@ -66,20 +66,25 @@
         .swiper-button-next, .swiper-button-prev { color: #333; }
         .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
 
-        /* --- SNS 社群行銷區塊 (手機 Mockup) --- */
-        .sns-section { padding: 80px 5%; background: #222; color: #fff; text-align: center; }
+        /* --- [新增/修改] SNS 社群行銷區塊 (★ 背景改為亮色 ★) --- */
+        .sns-section { 
+            padding: 80px 5%; 
+            background: #f9fafb; /* ★ 改為極淺的亮灰色 ★ */
+            color: #333; /* 文字改為深色 */
+            text-align: center; 
+        }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
-        .sns-section p { color: #aaa; margin-bottom: 40px; }
+        .sns-section p { color: #666; margin-bottom: 40px; } /* 描述文字顏色調淡 */
 
         .phone-mockup {
             width: 300px;
             height: 600px;
-            border: 14px solid #111;
+            border: 14px solid #111; /* 這個邊框會在行動二裡修改 */
             border-radius: 40px;
             margin: 0 auto;
             position: relative;
             background: #fff;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* ★ 調淡陰影，更適合亮色背景 ★ */
             overflow: hidden;
         }
 
@@ -98,11 +103,12 @@
         }
 
         .swiper-sns { width: 100%; height: 100%; }
-        .swiper-sns .swiper-slide { display: flex; justify-content: center; align-items: center; background: #333; color: #777; font-weight: bold; }
+        .swiper-sns .swiper-slide { display: flex; justify-content: center; align-items: center; background: #eee; color: #777; font-weight: bold; }
         .swiper-sns img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
         
-        .swiper-sns .swiper-pagination-bullet { background: #fff; opacity: 0.4; }
-        .swiper-sns .swiper-pagination-bullet-active { background: #fff; opacity: 1; }
+        /* ★ 圓點導覽列也調成適合亮色背景的深色 ★ */
+        .swiper-sns .swiper-pagination-bullet { background: #000; opacity: 0.2; }
+        .swiper-sns .swiper-pagination-bullet-active { background: #000; opacity: 0.8; }
 
         /* --- Web App 互動專案區塊 --- */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
@@ -247,7 +253,6 @@
         // --- 1. 平面作品資料庫自動生成 (保留 Google Drive ID 寫法) ---
         const projectsData = [
             { title: "旅用盥洗包說明設計", category: "排版與包裝設計", driveId: "1Tc-if0now_3eBUmt1Letbk0GoFnPX3fX" }
-            // 之後有新作品就繼續複製上面這行往下加
         ];
 
         const grid = document.getElementById('portfolio-grid');
