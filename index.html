@@ -66,7 +66,7 @@
         .swiper-button-next, .swiper-button-prev { color: #333; }
         .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
 
-        /* --- [新增] SNS 社群行銷區塊 (手機 Mockup) --- */
+        /* --- SNS 社群行銷區塊 (手機 Mockup) --- */
         .sns-section { padding: 80px 5%; background: #222; color: #fff; text-align: center; }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .sns-section p { color: #aaa; margin-bottom: 40px; }
@@ -176,7 +176,7 @@
     </section>
 
     <section id="sns-design" class="sns-section">
-        <h2>社群媒體與 LINE@ 視覺企劃</h2>
+        <h2>社群媒體視覺企劃</h2>
         <p>模擬真實手機瀏覽情境，請左右滑動螢幕查看不同的社群貼文與選單設計：</p>
         
         <div class="phone-mockup">
@@ -184,15 +184,11 @@
                 <div class="swiper-wrapper">
                     
                     <div class="swiper-slide">
-                        [ LINE@ 選單設計圖 ]
+                        [ 社群貼文設計圖 1 ]
                     </div>
                     
                     <div class="swiper-slide">
-                        [ IG 貼文設計圖 ]
-                    </div>
-
-                    <div class="swiper-slide">
-                        [ FB 廣告設計圖 ]
+                        [ 社群貼文設計圖 2 ]
                     </div>
 
                 </div>
@@ -212,14 +208,23 @@
         <div class="tabs">
             <button class="tab-btn active" onclick="openTab(event, 'accounting')">💰 家庭記帳程式</button>
             <button class="tab-btn" onclick="openTab(event, 'lottery')">🎄 聖誕抽獎活動</button>
+            
+            <button class="tab-btn" onclick="openTab(event, 'line-menu')">📱 LINE@ 分頁選單</button>
+            
             <button class="tab-btn" onclick="openTab(event, 'aigc')">📖 AIGC 學習講義</button>
         </div>
+        
         <div id="accounting" class="tab-content active">
             <iframe src="https://raymond-chen-git.github.io/my-family-money/demo/" title="家庭記帳程式 展示版"></iframe>
         </div>
         <div id="lottery" class="tab-content">
             <iframe src="https://raymond-chen-git.github.io/Xmas-slot-game/" title="聖誕抽獎活動"></iframe>
         </div>
+
+        <div id="line-menu" class="tab-content">
+            <iframe src="https://raymond-chen-git.github.io/line-menu-demo/" title="LINE@ 分頁選單模擬"></iframe>
+        </div>
+
         <div id="aigc" class="tab-content">
             <iframe src="https://3li3long.github.io/ai-cert-study/" title="AIGC 學習講義"></iframe>
         </div>
@@ -239,9 +244,10 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        // --- 1. 平面作品資料庫自動生成 ---
+        // --- 1. 平面作品資料庫自動生成 (保留 Google Drive ID 寫法) ---
         const projectsData = [
             { title: "旅用盥洗包說明設計", category: "排版與包裝設計", driveId: "1Tc-if0now_3eBUmt1Letbk0GoFnPX3fX" }
+            // 之後有新作品就繼續複製上面這行往下加
         ];
 
         const grid = document.getElementById('portfolio-grid');
@@ -299,10 +305,10 @@
             const swiperSns = new Swiper('.swiper-sns', {
                 grabCursor: true,
                 spaceBetween: 0,
-                loop: true, // 讓它可以無限循環滑動
+                loop: true, 
                 autoplay: {
-                    delay: 3000, // 每 3 秒自動切換
-                    disableOnInteraction: false, // 點擊後依然繼續自動播放
+                    delay: 3000, 
+                    disableOnInteraction: false, 
                 },
                 pagination: {
                     el: '.swiper-sns .swiper-pagination',
