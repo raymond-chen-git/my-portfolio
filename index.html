@@ -35,7 +35,7 @@
         .project-info h3 { font-size: 1.2rem; margin-bottom: 5px; }
         .project-info p { color: #888; font-size: 0.9rem; }
         
-        /* --- Wix 改版特效區塊 (3D 轉盤) --- */
+        /* --- Wix 改版特效區塊 --- */
         .redesign-section { padding: 80px 0; background: #fff; text-align: center; overflow: hidden; }
         .redesign-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .redesign-section p { color: #666; margin-bottom: 30px; }
@@ -43,18 +43,10 @@
         .redesign-showcase-container { width: 100%; max-width: 1000px; margin: 0 auto; position: relative; }
         .swiper-redesign { width: 100%; padding: 40px 0 60px 0; }
         
-        .swiper-slide-wix { 
-            width: 340px !important; 
-            height: auto; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            background-color: transparent !important;
-        }
-
+        .swiper-slide-wix { width: 340px !important; height: auto; display: flex; justify-content: center; align-items: center; background-color: transparent !important; }
         @media (max-width: 768px) { .swiper-slide-wix { width: 260px !important; } }
 
-        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); user-select: none; -webkit-user-select: none; transition: all 0.5s ease; }
+        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); user-select: none; -webkit-user-drag: none; transition: all 0.5s ease; }
         .a4-ratio-wrapper { position: relative; width: 100%; padding-bottom: 141.4%; height: 0; background-color: #f0f0f0; }
         
         .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
@@ -67,117 +59,73 @@
         .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
 
         /* --- SNS 社群行銷區塊 (亮色背景) --- */
-        .sns-section { 
-            padding: 80px 5%; 
-            background: #f9fafb; 
-            color: #333; 
-            text-align: center; 
-        }
+        .sns-section { padding: 80px 5%; background: #f9fafb; color: #333; text-align: center; }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .sns-section p { color: #666; margin-bottom: 40px; }
 
-        /* --- ★ 鈦金屬黑．超窄邊框 iPhone 17 Pro ★ --- */
+        /* ★ 鈦金屬黑．超窄邊框 iPhone 17 Pro ★ */
         .phone-mockup {
-            width: 300px;
-            height: 600px;
-            background-color: #fff; 
-            border: 8px solid #111; /* 退路底色，窄邊框 8px */
-            border-radius: 46px; 
-            margin: 0 auto;
-            position: relative;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
-            overflow: hidden;
-            z-index: 1;
+            width: 300px; height: 600px; background-color: #fff; border: 8px solid #111; border-radius: 46px; margin: 0 auto;
+            position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; z-index: 1;
         }
 
-        /* 外部金屬拉絲邊框 (鈦黑光澤) */
         .phone-mockup::after {
-            content: '';
-            position: absolute;
-            top: -8px; left: -8px; right: -8px; bottom: -8px; /* 貼合 8px 邊框 */
-            
-            /* 鈦黑色金屬光影與細微拉絲紋理 */
-            background-image: 
-                linear-gradient(90deg, #111 0%, #333 15%, #555 30%, #222 50%, #111 70%, #444 85%, #222 100%), 
-                repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px), 
-                repeating-linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px); 
-            
-            background-blend-mode: overlay, normal; 
-            border-radius: 46px;
-            z-index: -2; 
-            pointer-events: none;
+            content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; 
+            background-image: linear-gradient(90deg, #111 0%, #333 15%, #555 30%, #222 50%, #111 70%, #444 85%, #222 100%), 
+            repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px), 
+            repeating-linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px); 
+            background-blend-mode: overlay, normal; border-radius: 46px; z-index: -2; pointer-events: none;
         }
 
-        /* 螢幕內部高光切邊 (銀灰色反光) */
         .phone-mockup::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            border: 1px solid rgba(255, 255, 255, 0.15); /* 微微白光模擬玻璃與金屬交界 */
-            border-radius: 38px; /* 完美貼合內圓角 */
-            z-index: 0; 
-            pointer-events: none;
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 38px; z-index: 0; pointer-events: none;
         }
 
-        /* 動態島 (Dynamic Island) */
         .dynamic-island {
-            position: absolute;
-            top: 12px; 
-            left: 50%;
-            transform: translateX(-50%);
-            width: 85px; 
-            height: 20px;
-            background: #000;
-            border-radius: 20px; 
-            z-index: 10;
+            position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+            width: 85px; height: 20px; background: #000; border-radius: 20px; z-index: 50;
         }
 
-        .swiper-sns { width: 100%; height: 100%; }
-        .swiper-sns .swiper-slide { display: flex; justify-content: center; align-items: center; background: #eee; color: #777; font-weight: bold; }
-        .swiper-sns img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-        
+        .swiper-sns { width: 100%; height: 100%; z-index: 10; }
+        .swiper-sns .swiper-slide { background: #fff; }
         .swiper-sns .swiper-pagination-bullet { background: #000; opacity: 0.2; }
         .swiper-sns .swiper-pagination-bullet-active { background: #000; opacity: 0.8; }
 
-        /* --- ★ 社群貼文動態樣板 CSS ★ --- */
-        .sns-post-card {
-            width: 100%; height: 100%; 
-            display: flex; flex-direction: column; 
-            padding: 20px; box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            text-align: left;
-        }
+        /* =========================================
+           ★ 社群貼文動態樣板 UI (Meta & LINE) ★ 
+           ========================================= */
         
-        /* 貼文標題區 */
-        .sns-header { margin-top: 25px; margin-bottom: 15px; }
-        .sns-brand { font-size: 0.8rem; font-weight: bold; letter-spacing: 1px; opacity: 0.8; margin-bottom: 5px; }
-        .sns-title { font-size: 1.6rem; font-weight: 900; line-height: 1.1; margin-bottom: 10px; }
-        
-        /* 貼文圖片區 (置中) */
-        .sns-image-container {
-            width: 100%; flex-grow: 1; /* 自動填滿剩餘空間 */
-            display: flex; justify-content: center; align-items: center;
-            margin-bottom: 15px;
-        }
-        .sns-image-container img {
-            max-width: 80%; max-height: 220px; object-fit: contain;
-            filter: drop-shadow(0 15px 20px rgba(0,0,0,0.15)); /* 幫去背圖加上高級陰影 */
-        }
-        
-        /* 貼文內文區 */
-        .sns-content { background: rgba(255,255,255,0.9); padding: 15px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .sns-desc { font-size: 0.85rem; line-height: 1.5; color: #333; margin-bottom: 10px; }
-        
-        /* 條列式重點 */
-        .sns-features { list-style: none; padding: 0; margin: 0; }
-        .sns-features li {
-            font-size: 0.8rem; line-height: 1.4; color: #444; margin-bottom: 6px;
-            display: flex; align-items: flex-start;
-        }
-        .sns-features li::before { content: '✨'; margin-right: 6px; font-size: 0.7rem; margin-top: 2px; }
+        /* --- 1. Meta (Facebook) 貼文樣板 --- */
+        .meta-post { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; color: #1c1e21; text-align: left; font-family: Helvetica, Arial, sans-serif; padding-top: 30px; }
+        .meta-header { display: flex; align-items: center; padding: 12px; }
+        .meta-avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; margin-right: 10px; object-fit: cover; }
+        .meta-info { flex-grow: 1; }
+        .meta-name { font-weight: bold; font-size: 0.9rem; margin-bottom: 2px; }
+        .meta-time { font-size: 0.75rem; color: #65676b; display: flex; align-items: center; }
+        .meta-more { color: #65676b; font-weight: bold; letter-spacing: 2px; }
+        .meta-caption { padding: 0 12px 12px; font-size: 0.9rem; line-height: 1.4; }
+        .meta-image { width: 100%; max-height: 320px; object-fit: cover; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .meta-footer { padding: 10px 12px; margin-top: auto; padding-bottom: 40px; }
+        .meta-stats { font-size: 0.8rem; color: #65676b; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+        .meta-actions { display: flex; justify-content: space-between; border-top: 1px solid #ced0d4; padding-top: 10px; color: #65676b; font-size: 0.85rem; font-weight: bold; }
+        .meta-action-btn { display: flex; align-items: center; gap: 6px; cursor: pointer; }
 
-
+        /* --- 2. LINE@ 推播圖文樣板 --- */
+        .line-post { background: #7490C4; width: 100%; height: 100%; display: flex; flex-direction: column; padding: 15px; padding-top: 45px; box-sizing: border-box; text-align: left; font-family: sans-serif; }
+        .line-date { text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px; }
+        .line-message-row { display: flex; align-items: flex-start; gap: 10px; }
+        .line-avatar { width: 36px; height: 36px; border-radius: 50%; background: #eee; object-fit: cover; flex-shrink: 0; }
+        .line-bubble-group { display: flex; flex-direction: column; gap: 5px; max-width: 82%; }
+        .line-name { font-size: 0.75rem; color: #fff; margin-bottom: 2px; }
         
+        .line-rich-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .line-rich-image { width: 100%; display: block; object-fit: cover; }
+        .line-rich-text-area { padding: 12px; }
+        .line-rich-title { font-weight: bold; font-size: 0.9rem; color: #111; margin-bottom: 4px; }
+        .line-rich-desc { font-size: 0.8rem; color: #666; line-height: 1.4; }
+        .line-action-btn { display: block; text-align: center; padding: 10px; border-top: 1px solid #eee; color: #42659a; font-weight: bold; text-decoration: none; font-size: 0.85rem; }
+
         /* --- Web App 互動專案區塊 --- */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
         .interactive-section h2 { margin-bottom: 10px; font-size: 2rem; }
@@ -218,11 +166,9 @@
     <section id="wix-redesign" class="redesign-section">
         <h2>Wix 網頁形象改版案</h2>
         <p>滑動或點擊兩側箭頭，查看新舊版 3D 堆疊對比：</p>
-        
         <div class="redesign-showcase-container">
             <div class="swiper swiper-redesign">
                 <div class="swiper-wrapper">
-                    
                     <div class="swiper-slide swiper-slide-wix">
                         <div class="comparison-box">
                             <div class="comparison-label">Before / 修改前</div>
@@ -231,7 +177,6 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="swiper-slide swiper-slide-wix">
                         <div class="comparison-box">
                             <div class="comparison-label">After / 修改後</div>
@@ -240,7 +185,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -251,14 +195,13 @@
 
     <section id="sns-design" class="sns-section">
         <h2>社群媒體視覺企劃</h2>
-        <p>模擬真實手機瀏覽情境，請左右滑動螢幕查看不同的社群貼文與選單設計：</p>
+        <p>模擬真實手機瀏覽情境，左右滑動查看 Meta 粉專貼文與 LINE 推播設計：</p>
         
-<div class="phone-mockup">
+        <div class="phone-mockup">
             <div class="dynamic-island"></div>
             
             <div class="swiper swiper-sns">
-                <div class="swiper-wrapper" id="sns-wrapper">
-                    </div>
+                <div class="swiper-wrapper" id="sns-wrapper"></div>
                 <div class="swiper-pagination"></div>
             </div>
         </div>
@@ -307,68 +250,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        // --- ★ 社群貼文資料庫 (JSON 格式概念) ★ ---
-        // 以後你只要在這裡新增、修改文字或圖片檔名，畫面就會自動更新！
-        const snsData = [
-            {
-                bgColor: "#F48B29", // 貼文背景色 (例如這篇是亮橘色)
-                textColor: "#FFFFFF", // 標題文字顏色
-                brand: "BUBBLE SKINCARE",
-                title: "THE<br>INGREDIENTS",
-                imgSrc: "你的去背商品圖1.png", // 替換成你的商品去背圖
-                description: "專為年輕肌膚打造的溫和配方，拒絕有害化學物質。",
-                features: [
-                    "Niacinamide (維他命B3)：緊緻毛孔",
-                    "Salicylic Acid：溫和代謝老廢角質",
-                    "植物萃取：舒緩鎮定不刺激"
-                ]
-            },
-            {
-                bgColor: "#85C88A", // 第二篇換成綠色
-                textColor: "#000000",
-                brand: "NEW ARRIVAL",
-                title: "保濕透亮<br>新選擇",
-                imgSrc: "你的去背商品圖2.png", 
-                description: "注入滿滿玻尿酸，24小時全天候鎖水。",
-                features: [
-                    "Hyaluronic Acid：深層保濕",
-                    "Vitamin C：提亮抗氧化",
-                    "無香精、不致痘配方"
-                ]
-            }
-        ];
-
-        // --- ★ 自動生成 HTML 樣板的機器 ★ ---
-        const snsWrapper = document.getElementById('sns-wrapper');
-        
-        snsData.forEach(post => {
-            // 把條列重點陣列，轉換成 <li> 標籤
-            let featuresHtml = post.features.map(f => `<li>${f}</li>`).join('');
-            
-            // 將資料塞入 HTML 樣板中
-            let slideHtml = `
-                <div class="swiper-slide" style="background-color: ${post.bgColor}; color: ${post.textColor};">
-                    <div class="sns-post-card">
-                        <div class="sns-header">
-                            <div class="sns-brand">${post.brand}</div>
-                            <div class="sns-title">${post.title}</div>
-                        </div>
-                        
-                        <div class="sns-image-container">
-                            <img src="${post.imgSrc}" alt="${post.brand}">
-                        </div>
-                        
-                        <div class="sns-content">
-                            <div class="sns-desc">${post.description}</div>
-                            <ul class="sns-features">
-                                ${featuresHtml}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            `;
-            snsWrapper.innerHTML += slideHtml;
-        });
+        // --- 1. 平面作品資料庫自動生成 ---
         const projectsData = [
             { title: "旅用盥洗包說明設計", category: "排版與包裝設計", driveId: "1Tc-if0now_3eBUmt1Letbk0GoFnPX3fX" }
         ];
@@ -386,6 +268,7 @@
                 </div>`;
         });
 
+        // --- 2. 網頁頁籤切換邏輯 ---
         function openTab(evt, tabName) {
             let i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
@@ -396,7 +279,91 @@
             evt.currentTarget.classList.add("active");
         }
 
+        // --- 3. DOM 載入後執行：自動生成社群貼文 & 初始化 Swiper ---
         document.addEventListener('DOMContentLoaded', function () {
+            
+            // ★ A. 生成社群貼文資料庫 (支援 Meta 與 LINE 雙平台) ★
+            // 在這裡填寫你想展示的貼文資料，圖片請填入上傳到 GitHub 的檔名
+            const snsData = [
+                {
+                    type: "meta", // 這是 FB 貼文
+                    avatar: "https://ui-avatars.com/api/?name=Brand&background=0D8ABC&color=fff", // 大頭貼
+                    name: "品牌粉絲專頁名稱",
+                    time: "贊助 ‧ 🌍",
+                    caption: "🎉 年度最大檔優惠開跑！<br>現在購買立刻享有專屬折扣，快點擊下方圖片了解更多產品細節！✨",
+                    imgSrc: "這填入你的圖檔名.jpg", // ★★★ 換成你的社群貼文圖片檔名 ★★★
+                    likes: "1.2萬"
+                },
+                {
+                    type: "line", // 這是 LINE 推播
+                    avatar: "https://ui-avatars.com/api/?name=LINE&background=00B900&color=fff", 
+                    name: "官方帳號名稱",
+                    date: "今天 10:00",
+                    title: "🎁 好友專屬優惠來囉！",
+                    desc: "出示此畫面即可至門市兌換精美小禮物一份，數量有限送完為止喔！",
+                    imgSrc: "這填入你的圖檔名.jpg", // ★★★ 換成你的圖文推播圖片檔名 ★★★
+                    btnText: "立即領取優惠"
+                }
+            ];
+
+            const snsWrapper = document.getElementById('sns-wrapper');
+            if(snsWrapper) snsWrapper.innerHTML = '';
+            
+            let generatedHtml = '';
+            snsData.forEach(post => {
+                if (post.type === 'meta') {
+                    generatedHtml += `
+                        <div class="swiper-slide">
+                            <div class="meta-post">
+                                <div class="meta-header">
+                                    <img src="${post.avatar}" class="meta-avatar" alt="avatar">
+                                    <div class="meta-info">
+                                        <div class="meta-name">${post.name}</div>
+                                        <div class="meta-time">${post.time}</div>
+                                    </div>
+                                    <div class="meta-more">•••</div>
+                                </div>
+                                <div class="meta-caption">${post.caption}</div>
+                                <img src="${post.imgSrc}" class="meta-image" alt="post image">
+                                <div class="meta-footer">
+                                    <div class="meta-stats">👍 ❤️ 😲 ${post.likes}</div>
+                                    <div class="meta-actions">
+                                        <div class="meta-action-btn">👍 讚</div>
+                                        <div class="meta-action-btn">💬 留言</div>
+                                        <div class="meta-action-btn">↗️ 分享</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else if (post.type === 'line') {
+                    generatedHtml += `
+                        <div class="swiper-slide">
+                            <div class="line-post">
+                                <div class="line-date">${post.date}</div>
+                                <div class="line-message-row">
+                                    <img src="${post.avatar}" class="line-avatar" alt="avatar">
+                                    <div class="line-bubble-group">
+                                        <div class="line-name">${post.name}</div>
+                                        <div class="line-rich-card">
+                                            <img src="${post.imgSrc}" class="line-rich-image" alt="rich message">
+                                            <div class="line-rich-text-area">
+                                                <div class="line-rich-title">${post.title}</div>
+                                                <div class="line-rich-desc">${post.desc}</div>
+                                            </div>
+                                            <div class="line-action-btn">${post.btnText}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            // 寫入網頁
+            snsWrapper.innerHTML = generatedHtml;
+
+            // ★ B. 初始化 Wix 3D 轉盤
             const swiperWix = new Swiper('.swiper-redesign', {
                 effect: 'coverflow', grabCursor: true, centeredSlides: true, slidesPerView: 'auto', initialSlide: 1, 
                 coverflowEffect: { rotate: 40, stretch: 0, depth: 300, modifier: 1, slideShadows: true },
@@ -404,11 +371,13 @@
                 pagination: { el: '.swiper-redesign .swiper-pagination', clickable: true }
             });
 
+            // ★ C. 初始化社群手機平移輪播 (確保在 HTML 生成後執行)
             const swiperSns = new Swiper('.swiper-sns', {
                 grabCursor: true, spaceBetween: 0, loop: true, 
-                autoplay: { delay: 3000, disableOnInteraction: false },
+                autoplay: { delay: 4000, disableOnInteraction: false }, // 停留 4 秒讓面試官看字
                 pagination: { el: '.swiper-sns .swiper-pagination', clickable: true },
             });
+
         });
     </script>
 </body>
