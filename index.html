@@ -76,11 +76,12 @@
         .swiper-button-next, .swiper-button-prev { color: #333; }
         .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
 
-        /* --- SNS 社群行銷區塊 --- */
+        /* --- SNS 社群行銷區塊 (亮色背景) --- */
         .sns-section { padding: 80px 5%; background: #f9fafb; color: #333; text-align: center; }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .sns-section p { color: #666; margin-bottom: 40px; }
 
+        /* 鈦金屬黑．超窄邊框 iPhone 17 Pro */
         .phone-mockup { width: 300px; height: 600px; background-color: #fff; border: 8px solid #111; border-radius: 46px; margin: 0 auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; z-index: 1; }
         .phone-mockup::after { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; background-image: linear-gradient(90deg, #111 0%, #333 15%, #555 30%, #222 50%, #111 70%, #444 85%, #222 100%), repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px); background-blend-mode: overlay, normal; border-radius: 46px; z-index: -2; pointer-events: none; }
         .phone-mockup::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 38px; z-index: 0; pointer-events: none; }
@@ -91,6 +92,7 @@
         .swiper-sns .swiper-pagination-bullet { background: #000; opacity: 0.2; }
         .swiper-sns .swiper-pagination-bullet-active { background: #000; opacity: 0.8; }
 
+        /* --- 1. Meta 貼文樣板 --- */
         .meta-post { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; color: #1c1e21; text-align: left; font-family: Helvetica, Arial, sans-serif; padding-top: 30px; }
         .meta-header { display: flex; align-items: center; padding: 12px; }
         .meta-avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; margin-right: 10px; object-fit: cover; }
@@ -105,6 +107,7 @@
         .meta-actions { display: flex; justify-content: space-between; border-top: 1px solid #ced0d4; padding-top: 10px; color: #65676b; font-size: 0.85rem; font-weight: bold; }
         .meta-action-btn { display: flex; align-items: center; gap: 6px; cursor: pointer; }
 
+        /* --- 2. LINE@ 官方帳號原生推播樣板 --- */
         .line-post { background: #8bacd1; width: 100%; height: 100%; display: flex; flex-direction: column; padding: 15px; padding-top: 45px; padding-bottom: 40px; box-sizing: border-box; text-align: left; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-y: auto; scrollbar-width: none; }
         .line-post::-webkit-scrollbar { display: none; }
         .line-date { text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px; }
@@ -121,13 +124,7 @@
         .rich-menu-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .rich-menu-section p { color: #666; margin-bottom: 40px; }
         
-        .rich-menu-container { max-width: 800px; margin: 0 auto; position: relative; }
-        .swiper-rich-menu { width: 100%; padding-bottom: 50px; }
-        .swiper-rich-menu .swiper-slide { display: flex; justify-content: center; align-items: center; }
-        .rich-menu-img { width: 100%; max-width: 800px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); object-fit: cover; display: block; }
-        
         .swiper-rich-menu .swiper-pagination-bullet-active { background: #333; }
-        .swiper-rich-menu .swiper-button-next, .swiper-rich-menu .swiper-button-prev { color: #333; }
 
         /* --- Web App 互動專案區塊 --- */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
@@ -245,13 +242,23 @@
         <h2>LINE 官方帳號圖文選單設計</h2>
         <p>針對品牌需求客製化之 LINE 底部圖文選單，結合直覺的視覺引導與互動熱區規劃，提升官方帳號點擊率與用戶體驗。</p>
         
-        <div class="rich-menu-container">
-            <div class="swiper swiper-rich-menu">
-                <div class="swiper-wrapper" id="rich-menu-wrapper">
+        <div class="phone-mockup">
+            <div class="dynamic-island"></div>
+            <div class="line-screen" style="width: 100%; height: 100%; background: #8bacd1; border-radius: 38px; position: relative; overflow: hidden;">
+                
+                <div style="padding: 60px 15px 0;">
+                    <div class="line-date" style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px;">今天 10:00</div>
+                    <div class="line-text-bubble" style="background: #fff; padding: 12px 16px; border-radius: 16px; border-top-left-radius: 4px; font-size: 0.85rem; width: fit-content; margin-top: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                        歡迎！請滑動下方選單查看各項服務 👇
                     </div>
-                <div class="swiper-pagination"></div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
+                </div>
+
+                <div class="swiper swiper-rich-menu" style="position: absolute; bottom: 0; left: 0; width: 100%; padding-bottom: 25px; background: #fff; box-shadow: 0 -4px 15px rgba(0,0,0,0.1);">
+                    <div class="swiper-wrapper" id="rich-menu-wrapper">
+                        </div>
+                    <div class="swiper-pagination" style="bottom: 5px;"></div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -358,7 +365,7 @@
                         <div class="swiper-slide">
                             <div class="meta-post">
                                 <div class="meta-header">
-                                    <img src="${post.avatar}" class="meta-avatar" alt="avatar">
+                                    <img src="${post.avatar}" class="meta-avatar" alt="avatar" onerror="this.style.display='none'">
                                     <div class="meta-info">
                                         <div class="meta-name">${post.name}</div>
                                         <div class="meta-time">${post.time}</div>
@@ -388,13 +395,13 @@
                         }
                     });
 
-                    let avatarError = `onerror="this.src='https://ui-avatars.com/api/?name=LINE&background=00B900&color=fff'"`;
+                    // 移除錯誤 placeholder
                     generatedHtml += `
                         <div class="swiper-slide">
                             <div class="line-post">
                                 <div class="line-date">${post.date}</div>
                                 <div class="line-message-row">
-                                    <img src="${post.avatar}" ${avatarError} class="line-avatar" alt="avatar">
+                                    <img src="${post.avatar}" class="line-avatar" alt="avatar" onerror="this.style.display='none'">
                                     <div class="line-bubble-group">
                                         <div class="line-name">${post.name}</div>
                                         ${messagesHtml}
@@ -407,7 +414,8 @@
             });
             if(snsWrapper) snsWrapper.innerHTML = generatedHtml;
 
-            // ★ LINE 圖文選單資料庫生成 (14張 PNG，去除備用圖片設定) ★
+            // ★ 圖文選單資料庫生成 (14張 PNG) ★
+            // 修正：已拔除會導致網頁無盡轉圈的外部 Placeholder 圖片
             const richMenuData = [
                 { imgSrc: "rich-menu/01.png", title: "圖文選單 01" },
                 { imgSrc: "rich-menu/02.png", title: "圖文選單 02" },
@@ -431,7 +439,7 @@
                 richMenuData.forEach(item => {
                     rmHtml += `
                         <div class="swiper-slide">
-                            <img src="${item.imgSrc}" alt="${item.title}" class="rich-menu-img" onerror="this.style.display='none'">
+                            <img src="${item.imgSrc}" alt="${item.title}" style="width: 100%; display: block;" onerror="this.style.display='none'">
                         </div>
                     `;
                 });
@@ -454,10 +462,9 @@
 
             // 初始化圖文選單輪播
             const swiperRichMenu = new Swiper('.swiper-rich-menu', {
-                grabCursor: true, loop: true, spaceBetween: 30,
+                grabCursor: true, loop: true, spaceBetween: 0,
                 autoplay: { delay: 4000, disableOnInteraction: false },
-                pagination: { el: '.swiper-rich-menu .swiper-pagination', clickable: true },
-                navigation: { nextEl: '.swiper-rich-menu .swiper-button-next', prevEl: '.swiper-rich-menu .swiper-button-prev' }
+                pagination: { el: '.swiper-rich-menu .swiper-pagination', clickable: true }
             });
 
         });
