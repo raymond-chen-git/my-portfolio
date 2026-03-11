@@ -43,7 +43,7 @@
         .workflow-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
         .workflow-card p { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 0; }
 
-        /* --- ★ 產品型錄與情境視覺 ★ --- */
+        /* --- ★ 產品型錄與情境視覺 (大網格版) ★ --- */
         .portfolio-section { padding: 80px 5%; }
         .portfolio-section h2 { margin-bottom: 10px; text-align: center; font-size: 2rem; }
         .portfolio-section > p { text-align: center; color: #666; margin-bottom: 40px; }
@@ -366,7 +366,7 @@
                                     <div class="meta-more">•••</div>
                                 </div>
                                 <div class="meta-caption">${post.caption}</div>
-                                <img src="${post.imgSrc}" class="meta-image" alt="post image" onerror="this.src='https://via.placeholder.com/400x400?text=Your+Design+Here'">
+                                <img src="${post.imgSrc}" class="meta-image" alt="post image" onerror="this.style.display='none'">
                                 <div class="meta-footer">
                                     <div class="meta-stats">👍 ${post.likes}</div>
                                     <div class="meta-actions">
@@ -384,7 +384,7 @@
                         if (msg.type === 'text') {
                             messagesHtml += `<div class="line-text-bubble">${msg.text}</div>`;
                         } else if (msg.type === 'image') {
-                            messagesHtml += `<div class="line-image-bubble"><img src="${msg.imgSrc}" alt="image message" onerror="this.src='https://via.placeholder.com/300x400?text=LINE+Image+Message'"></div>`;
+                            messagesHtml += `<div class="line-image-bubble"><img src="${msg.imgSrc}" alt="image message" onerror="this.style.display='none'"></div>`;
                         }
                     });
 
@@ -407,17 +407,17 @@
             });
             if(snsWrapper) snsWrapper.innerHTML = generatedHtml;
 
-// ★ 新增：LINE 圖文選單資料庫生成 (擴充至 14 張) ★
+            // ★ LINE 圖文選單資料庫生成 (14張 PNG，去除備用圖片設定) ★
             const richMenuData = [
-                { imgSrc: "rich-menu/01.png", title: "圖文選單 1" },
-                { imgSrc: "rich-menu/02.png", title: "圖文選單 2" },
-                { imgSrc: "rich-menu/03.png", title: "圖文選單 3" },
-                { imgSrc: "rich-menu/04.png", title: "圖文選單 4" },
-                { imgSrc: "rich-menu/05.png", title: "圖文選單 5" },
-                { imgSrc: "rich-menu/06.png", title: "圖文選單 6" },
-                { imgSrc: "rich-menu/07.png", title: "圖文選單 7" },
-                { imgSrc: "rich-menu/08.png", title: "圖文選單 8" },
-                { imgSrc: "rich-menu/09.png", title: "圖文選單 9" },
+                { imgSrc: "rich-menu/01.png", title: "圖文選單 01" },
+                { imgSrc: "rich-menu/02.png", title: "圖文選單 02" },
+                { imgSrc: "rich-menu/03.png", title: "圖文選單 03" },
+                { imgSrc: "rich-menu/04.png", title: "圖文選單 04" },
+                { imgSrc: "rich-menu/05.png", title: "圖文選單 05" },
+                { imgSrc: "rich-menu/06.png", title: "圖文選單 06" },
+                { imgSrc: "rich-menu/07.png", title: "圖文選單 07" },
+                { imgSrc: "rich-menu/08.png", title: "圖文選單 08" },
+                { imgSrc: "rich-menu/09.png", title: "圖文選單 09" },
                 { imgSrc: "rich-menu/10.png", title: "圖文選單 10" },
                 { imgSrc: "rich-menu/11.png", title: "圖文選單 11" },
                 { imgSrc: "rich-menu/12.png", title: "圖文選單 12" },
@@ -431,7 +431,7 @@
                 richMenuData.forEach(item => {
                     rmHtml += `
                         <div class="swiper-slide">
-                            <img src="${item.imgSrc}" alt="${item.title}" class="rich-menu-img" onerror="this.src='https://via.placeholder.com/800x270?text=圖片路徑錯誤'">
+                            <img src="${item.imgSrc}" alt="${item.title}" class="rich-menu-img" onerror="this.style.display='none'">
                         </div>
                     `;
                 });
