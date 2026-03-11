@@ -105,11 +105,37 @@
         .meta-more { color: #65676b; font-weight: bold; letter-spacing: 2px; }
         .meta-caption { padding: 0 12px 12px; font-size: 0.9rem; line-height: 1.5; flex-shrink: 0; }
         .meta-caption a { color: #1877F2; text-decoration: none; }
-        .meta-image { width: 100%; max-height: 320px; object-fit: cover; border-top: 1px solid #eee; border-bottom: 1px solid #eee; flex-shrink: 0;}
         
-        /* ★ 新增：Meta 影片框架 (鎖定 16:9 比例) ★ */
+        /* 影片框架 (鎖定 16:9 比例) */
         .meta-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000; flex-shrink: 0;}
         .meta-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* ★ 新增：多圖動態網格系統 ★ */
+        .meta-grid { width: 100%; border-top: 1px solid #eee; border-bottom: 1px solid #eee; flex-shrink: 0; display: grid; gap: 2px; background: #fff; }
+        .meta-grid img { width: 100%; height: 100%; object-fit: cover; display: block; background: #f0f2f5; }
+        
+        /* 1 張圖 */
+        .meta-grid-1 { grid-template-columns: 1fr; }
+        .meta-grid-1 img { max-height: 320px; }
+        
+        /* 2 張圖 (左右並排) */
+        .meta-grid-2 { grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; }
+        
+        /* 3 張圖 (1上2下) */
+        .meta-grid-3 { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 150px; }
+        .meta-grid-3 img:nth-child(1) { grid-column: span 2; }
+        
+        /* 4 張圖 (田字格) */
+        .meta-grid-4 { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+        
+        /* 5 張以上圖 (2上3下) */
+        .meta-grid-5 { grid-template-columns: repeat(6, 1fr); grid-template-rows: 180px 120px; }
+        .meta-grid-5 .img-1, .meta-grid-5 .img-2 { grid-column: span 3; }
+        .meta-grid-5 .img-3, .meta-grid-5 .img-4, .meta-grid-5 .img-5 { grid-column: span 2; }
+        
+        /* 剩餘數量遮罩 */
+        .meta-grid-more { position: relative; width: 100%; height: 100%; display: block; }
+        .meta-grid-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; font-weight: bold; pointer-events: none; }
 
         .meta-footer { padding: 10px 12px; margin-top: auto; padding-bottom: 40px; flex-shrink: 0;}
         .meta-stats { font-size: 0.8rem; color: #65676b; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
@@ -356,57 +382,67 @@
         // --- 4. DOM 載入後執行：各區域資料生成與初始化 ---
         document.addEventListener('DOMContentLoaded', function () {
             
-            // ★ 全新升級：社群貼文資料庫 (包含靜態圖文與 YouTube 影片嵌入) ★
-            // 請將粉絲專頁的大頭貼上傳至 GitHub，命名為 avatar.png
+            // ★ 社群貼文資料庫 (包含多圖排版演算邏輯) ★
             const snsData = [
                 // 第一篇：影片貼文 (YouTube 嵌入版)
                 {
-                    type: "meta-video", // 專屬的影片貼文格式
-                    avatar: "avatar.png", 
+                    type: "meta-video", 
+                    avatar: "sns-posts/avatar.png", 
                     name: "山陽產業集團｜三隆國際｜三立飯店用品",
                     time: "剛剛 · 🌎",
                     caption: "國外高級飯店旅宿愛用款，詢問度超高的「隱形懸浮壁掛架」來了！<br><br>【自有品牌契約客戶－限定禮遇】凡符合專案簽約資格，即能享有：<br>✔️ 隱形懸浮壁掛架：極簡設計，彷彿漂浮於牆面。<br>✔️ 無料供應：由我們全額吸收硬體成本，免費提供使用。<br><br>👇 35秒精彩影片搶先看",
-                    videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s?si=pGvjHMTZxJDHWOV-", // YouTube 嵌入網址
+                    videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s?si=pGvjHMTZxJDHWOV-", 
                     likes: "88"
                 },
-                // 第二篇：靜態貼文 版本 1
+                // 第二篇：多圖版面排版測試 (超過5張圖)
                 {
                     type: "meta",
-                    avatar: "avatar.png", 
+                    avatar: "sns-posts/avatar.png", 
                     name: "山陽產業集團｜三隆國際｜三立飯店用品",
                     time: "2小時前 · 🌎",
-                    caption: "開工大吉～～等等…三天連假馬上就要來了！<br>動作快！春節連假後想補充就趁現在，因為連假期間我們不出貨喔！<br>不想營業開天窗，好好把握最後機會！<br>⚠️ 連假期間暫停物流業，連假前到貨請務必向門市人員確認時間唷！<br>🏃 立刻聯繫我們下單!<br><br>或前往官網看看我們最新的【隱形懸浮壁掛瓶】吧～<br>隱藏式支架搭配簡約公版設計，讓您的浴室風格煥然一新✨<br>👉 點擊下面連結查看產品詳細<br><a href='https://reurl.cc/W8ZppO' target='_blank'>https://reurl.cc/W8ZppO</a>",
-                    imgSrc: "post1.jpg", // 準備上傳的貼文圖片檔名
-                    likes: "128"
+                    caption: "【2026浴室備品新標準】把支架變不見，讓質感再升級！<br><br>您精心挑選的浴室磁磚與牆面，不該被笨重的支架遮擋。 我們全新的解決方案，將進一步提升您的空間質感✨<br><br>🔹 極致隱形：無外露鎖點托架，視覺清爽<br>🔹 靈活安裝：黏貼/打孔皆可，附定位紙輕鬆搞定<br>🔹 客製搭配：可選配專屬壓克力成分說明背板<br><br>🎁【新春最大方．契約客戶獨享】<br>新簽約使用「三隆自有品牌洗沐產品」，不限房間數量，通通 #免費供應！<br>首批一月初到貨，數量有限，把握機會！<br><br>📞 升級專線：0800-335-666 或私訊我們",
+                    // 使用 images 陣列，系統會自動生成多圖網格。測試用：可填入 8 張路徑
+                    images: [
+                        "sns-posts/post1-1.jpg", 
+                        "sns-posts/post1-2.jpg", 
+                        "sns-posts/post1-3.jpg",
+                        "sns-posts/post1-4.jpg",
+                        "sns-posts/post1-5.jpg",
+                        "sns-posts/post1-6.jpg",
+                        "sns-posts/post1-7.jpg",
+                        "sns-posts/post1-8.jpg"
+                    ],
+                    likes: "188"
                 },
-                // 第三篇：靜態貼文 版本 2
+                // 第三篇：單張圖片貼文
                 {
                     type: "meta",
-                    avatar: "avatar.png", 
+                    avatar: "sns-posts/avatar.png", 
                     name: "山陽產業集團｜三隆國際｜三立飯店用品",
                     time: "昨天上午 10:00 · 🌎",
                     caption: "【新品入荷｜SPA整復按摩推拿用品】<br><br>不只飯店備品，我們開始提供SPA整復按摩推拿用品囉～<br>方便的一站式採購，輕鬆解決冗長的購買決策。<br>最挺你的營業支援就找三隆國際，我們有：<br><br>🔹 星級飯店毛浴巾：厚薄款式豐富齊全，將星級的親膚觸感帶進您的店裡。<br>🔹 橄欖雪松精華系列：添加精華的按摩油與乳液，質地好推不油膩；沉穩木質調香氛，升級感官體驗。<br>🔹 自有品牌清潔劑：高CP值選擇，無論玻璃地面廁所廚房甚至洗衣一應俱全，全方位顧好您的門面。<br>🔹 客製化營支用品：將品牌客製在用品上，展現專業形象，打造亮眼的專屬風格。<br><br>我們販售的不僅是用品，更是長期的團隊支援💪<br>立即聯繫我們，或點擊下方網址瞭解更多細節：<br>🌐 官網探索： <a href='https://www.sy-hotelsupplies.com/' target='_blank'>https://www.sy-hotelsupplies.com/</a><br>📞 免付費訂購專線： 0800 335 666",
-                    imgSrc: "post2.jpg", 
+                    // 只有一張圖時，維持陣列內僅放 1 個字串即可，系統會自動輸出單圖格式
+                    images: ["sns-posts/post2.jpg"], 
                     likes: "256"
                 },
-                // 第四篇：靜態貼文 版本 3
+                // 第四篇：單張圖片貼文
                 {
                     type: "meta",
-                    avatar: "avatar.png", 
+                    avatar: "sns-posts/avatar.png", 
                     name: "山陽產業集團｜三隆國際｜三立飯店用品",
                     time: "2月23日上午 9:00 · 🌎",
                     caption: "🧨 新春恭喜！迎接充滿活力的 2026 丙午馬年 🐴<br>祝福各位新的一年龍馬精神、事業萬馬奔騰，業績與財運都一馬當先！<br><br>⚠️ 溫馨提醒： 為了讓各位都能在年前順利備貨 ，歡迎洽詢各門市人員 🙋‍♀️ 以獲取「年前最後叫貨與出貨截止時間」的資訊喔！<br><br>感謝大家一整年的支持，我們年後見👋",
-                    imgSrc: "post3.jpg", 
+                    images: ["sns-posts/post3.jpg"], 
                     likes: "312"
                 },
                 // 第五篇：LINE 原生貼文
                 {
                     type: "line",
-                    avatar: "avatar.png", 
+                    avatar: "sns-posts/avatar.png", 
                     name: "山陽產業 | 三隆國際台南營業處",
                     date: "今天 10:00",
                     messages: [
-                        { type: "image", imgSrc: "line-post.jpg" }, // 替換為你的慶元宵圖片檔名
+                        { type: "image", imgSrc: "sns-posts/line-post.jpg" }, 
                         { type: "text", text: "過了元宵，年就算真正過完了 🏮<br><br>無論這陣子檔期多忙碌，別忘了留點時間給自己和家人，好好坐下來吃碗熱騰騰的湯圓與元宵吧 🥣✨<br><br>三隆國際在此祝各位業界的好朋友們，<br>元宵佳節愉快！<br>新的一年平安順心，生意興隆人團圓 🧧" }
                     ]
                 }
@@ -417,8 +453,42 @@
             
             let generatedHtml = '';
             snsData.forEach(post => {
-                // 渲染：一般圖片 Meta 貼文
+                
+                // --- 渲染：一般圖片 Meta 貼文 (含多圖演算邏輯) ---
                 if (post.type === 'meta') {
+                    
+                    // 判斷影像陣列，生成對應的網格 HTML
+                    let imagesHtml = '';
+                    if (post.images && Array.isArray(post.images) && post.images.length > 0) {
+                        let len = post.images.length;
+                        // 設定破圖時的安全處理：不顯示錯誤圖示，僅顯示灰色背景
+                        let errHandler = "onerror=\"this.src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs='; this.style.backgroundColor='#f0f2f5';\"";
+
+                        if (len === 1) {
+                            imagesHtml = `<div class="meta-grid meta-grid-1"><img src="${post.images[0]}" ${errHandler}></div>`;
+                        } else if (len === 2) {
+                            imagesHtml = `<div class="meta-grid meta-grid-2"><img src="${post.images[0]}" ${errHandler}><img src="${post.images[1]}" ${errHandler}></div>`;
+                        } else if (len === 3) {
+                            imagesHtml = `<div class="meta-grid meta-grid-3"><img src="${post.images[0]}" ${errHandler}><img src="${post.images[1]}" ${errHandler}><img src="${post.images[2]}" ${errHandler}></div>`;
+                        } else if (len === 4) {
+                            imagesHtml = `<div class="meta-grid meta-grid-4"><img src="${post.images[0]}" ${errHandler}><img src="${post.images[1]}" ${errHandler}><img src="${post.images[2]}" ${errHandler}><img src="${post.images[3]}" ${errHandler}></div>`;
+                        } else if (len >= 5) {
+                            let extra = len - 5;
+                            let overlay = extra > 0 ? `<div class="meta-grid-overlay">+${extra}</div>` : '';
+                            imagesHtml = `
+                                <div class="meta-grid meta-grid-5">
+                                    <img src="${post.images[0]}" class="img-1" ${errHandler}>
+                                    <img src="${post.images[1]}" class="img-2" ${errHandler}>
+                                    <img src="${post.images[2]}" class="img-3" ${errHandler}>
+                                    <img src="${post.images[3]}" class="img-4" ${errHandler}>
+                                    <div class="meta-grid-more img-5">
+                                        <img src="${post.images[4]}" ${errHandler}>
+                                        ${overlay}
+                                    </div>
+                                </div>`;
+                        }
+                    }
+
                     generatedHtml += `
                         <div class="swiper-slide">
                             <div class="meta-post">
@@ -431,7 +501,7 @@
                                     <div class="meta-more">•••</div>
                                 </div>
                                 <div class="meta-caption">${post.caption}</div>
-                                <img src="${post.imgSrc}" class="meta-image" alt="post image" onerror="this.style.display='none'">
+                                ${imagesHtml}
                                 <div class="meta-footer">
                                     <div class="meta-stats">👍 ${post.likes}</div>
                                     <div class="meta-actions">
@@ -444,7 +514,7 @@
                         </div>
                     `;
                 } 
-                // ★ 全新渲染：影片 Meta 貼文 ★
+                // --- 渲染：影片 Meta 貼文 ---
                 else if (post.type === 'meta-video') {
                     generatedHtml += `
                         <div class="swiper-slide">
@@ -473,14 +543,16 @@
                         </div>
                     `;
                 }
-                // 渲染：LINE 貼文
+                // --- 渲染：LINE 貼文 ---
                 else if (post.type === 'line') {
                     let messagesHtml = '';
                     post.messages.forEach(msg => {
                         if (msg.type === 'text') {
                             messagesHtml += `<div class="line-text-bubble">${msg.text}</div>`;
                         } else if (msg.type === 'image') {
-                            messagesHtml += `<div class="line-image-bubble"><img src="${msg.imgSrc}" alt="image message" onerror="this.style.display='none'"></div>`;
+                            // 設定 LINE 圖片安全處理
+                            let errHandler = "onerror=\"this.style.display='none';\"";
+                            messagesHtml += `<div class="line-image-bubble"><img src="${msg.imgSrc}" alt="image message" ${errHandler}></div>`;
                         }
                     });
 
@@ -541,7 +613,7 @@
                 pagination: { el: '.swiper-redesign .swiper-pagination', clickable: true }
             });
 
-            // 將社群手機改為滑動不要自動輪播，方便觀看影片與長文
+            // 社群手機滑動配置
             const swiperSns = new Swiper('.swiper-sns', {
                 grabCursor: true, spaceBetween: 0, loop: true, 
                 pagination: { el: '.swiper-sns .swiper-pagination', clickable: true },
@@ -549,6 +621,7 @@
                 observeParents: true
             });
 
+            // 圖文選單輪播配置
             const swiperRichMenu = new Swiper('.swiper-rich-menu', {
                 grabCursor: true, loop: true, spaceBetween: 0,
                 autoplay: { delay: 4000, disableOnInteraction: false },
