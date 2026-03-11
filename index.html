@@ -25,49 +25,43 @@
         .hero p { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
         .btn { display: inline-block; padding: 12px 24px; background: #000; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; }
         
-        /* 3D 劇院級影音展示區 */
+        /* 影音展示區 */
         .video-showcase-section { padding: 100px 5%; background: #111; color: #fff; text-align: center; }
-        .video-showcase-section h2 { font-size: 2rem; margin-bottom: 15px; color: #fff; }
-        .video-showcase-section > p { color: #ccc; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6; }
-
+        .video-showcase-section h2 { font-size: 2rem; margin-bottom: 15px; }
+        .video-showcase-section > p { color: #ccc; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
         .video-player-container { max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1); background: #000; }
         .video-player-container iframe { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; border: none; }
 
         .workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 40px auto 0; }
-        .workflow-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px 20px; border-radius: 12px; text-align: left; transition: transform 0.3s ease, background 0.3s ease; }
-        .workflow-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08); }
+        .workflow-card { background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); padding: 25px 20px; border-radius: 12px; text-align: left; }
         .workflow-step-num { font-size: 0.85rem; font-weight: bold; color: #8bacd1; letter-spacing: 2px; margin-bottom: 5px; }
         .workflow-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
-        .workflow-card p { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 0; }
+        .workflow-card p { font-size: 0.85rem; color: #888; }
 
-        /* 產品型錄與情境視覺 */
+        /* 平面設計與型錄區 */
         .portfolio-section { padding: 80px 5%; }
-        .portfolio-section h2 { margin-bottom: 10px; text-align: center; font-size: 2rem; }
+        .portfolio-section h2 { text-align: center; font-size: 2rem; margin-bottom: 10px; }
         .portfolio-section > p { text-align: center; color: #666; margin-bottom: 40px; }
-        
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; }
-        .project-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.06); transition: transform 0.3s ease; }
-        .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .project-image { width: 100%; height: 350px; object-fit: cover; display: block; }
+        .project-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.06); transition: transform 0.3s; }
+        .project-card:hover { transform: translateY(-10px); }
+        .project-image { width: 100%; height: 350px; object-fit: cover; }
         .project-info { padding: 25px; }
         .project-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
         .project-info p { color: #888; font-size: 0.95rem; }
-        
-        /* Wix 改版特效 */
+
+        /* Wix 改版區 */
         .redesign-section { padding: 80px 0; background: #fff; text-align: center; overflow: hidden; }
-        .redesign-section h2 { font-size: 2rem; margin-bottom: 10px; }
-        .redesign-section p { color: #666; margin-bottom: 30px; }
         .redesign-showcase-container { width: 100%; max-width: 1000px; margin: 0 auto; position: relative; }
         .swiper-redesign { width: 100%; padding: 40px 0 60px 0; }
-        .swiper-slide-wix { width: 340px !important; height: auto; display: flex; justify-content: center; align-items: center; background-color: transparent !important; }
-        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); filter: grayscale(80%) brightness(60%) blur(3px); transform: scale(0.9); opacity: 0.8; transition: all 0.5s ease; }
-        .swiper-slide-active .comparison-box { filter: grayscale(0%) brightness(100%) blur(0px); transform: scale(1.05); opacity: 1; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+        .comparison-box { position: relative; width: 100%; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: all 0.5s ease; filter: grayscale(80%) brightness(60%) blur(3px); transform: scale(0.9); }
+        .swiper-slide-active .comparison-box { filter: grayscale(0%) brightness(100%) blur(0px); transform: scale(1.05); opacity: 1; }
         .a4-ratio-wrapper { position: relative; width: 100%; padding-bottom: 141.4%; height: 0; background-color: #f0f0f0; }
         .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
         .comparison-label { position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.8); color: #fff; padding: 6px 15px; border-radius: 20px; font-weight: bold; font-size: 0.8rem; z-index: 10; }
 
-        /* --- 整合版：社群與官方帳號展示區 --- */
-        .sns-section { padding: 80px 5%; color: #333; text-align: center; transition: background-color 0.4s ease; }
+        /* --- 整合版：社群與官方帳號區 --- */
+        .sns-section { padding: 80px 5%; text-align: center; transition: background-color 0.4s ease; }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .sns-section p { color: #666; margin-bottom: 30px; }
 
@@ -77,7 +71,7 @@
 
         /* 鈦金屬黑手機外殼 */
         .phone-mockup { width: 300px; height: 600px; background-color: #fff; border: 8px solid #111; border-radius: 46px; margin: 0 auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; z-index: 1; }
-        .phone-mockup::after { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; background-image: linear-gradient(90deg, #111 0%, #333 15%, #555 30%, #222 50%, #111 70%, #444 85%, #222 100%), repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px); background-blend-mode: overlay, normal; border-radius: 46px; z-index: -2; pointer-events: none; }
+        .phone-mockup::after { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; background-image: linear-gradient(90deg, #111 0%, #333 15%, #555 30%, #222 50%, #111 70%, #444 85%, #222 100%), repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px); border-radius: 46px; z-index: -2; pointer-events: none; }
         .phone-mockup::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 38px; z-index: 0; pointer-events: none; }
         .dynamic-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 85px; height: 20px; background: #000; border-radius: 20px; z-index: 50; }
 
@@ -85,7 +79,7 @@
         .swiper-rich-menu { width: 100%; z-index: 10; } 
         .swiper-sns .swiper-slide { background: #fff; height: 100%; }
 
-        /* ★ 核心修正：讓電腦也能順利捲動的手機內容層 ★ */
+        /* ★ 核心：獨立捲動內容層 ★ */
         .scrollable-content { 
             width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; 
             padding-top: 45px; padding-bottom: 40px; 
@@ -95,39 +89,39 @@
         .scrollable-content::-webkit-scrollbar { display: none; }
         .scrollable-content:active { cursor: grabbing; }
 
-        /* Meta 貼文樣式 */
+        /* FB 貼文樣式 */
         .meta-post { background: #fff; width: 100%; min-height: 100%; display: flex; flex-direction: column; color: #1c1e21; text-align: left; font-family: Helvetica, Arial, sans-serif; }
-        .meta-header { display: flex; align-items: center; padding: 12px; }
-        .meta-avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; margin-right: 10px; border: 1px solid #ddd; object-fit: cover; }
+        .meta-header { display: flex; align-items: center; padding: 12px; flex-shrink: 0; }
+        .meta-avatar { width: 36px; height: 36px; border-radius: 50%; background: #eee; margin-right: 10px; border: 1px solid #ddd; object-fit: cover; }
         .meta-info { flex-grow: 1; }
-        .meta-name { font-weight: bold; font-size: 0.85rem; }
-        .meta-time { font-size: 0.7rem; color: #65676b; }
-        .meta-caption { padding: 0 12px 12px; font-size: 0.85rem; line-height: 1.5; white-space: pre-wrap; }
+        .meta-name { font-weight: bold; font-size: 0.8rem; line-height: 1.2; }
+        .meta-time { font-size: 0.65rem; color: #65676b; }
+        .meta-caption { padding: 0 12px 12px; font-size: 0.8rem; line-height: 1.5; white-space: pre-wrap; }
         .meta-caption a { color: #1877F2; text-decoration: none; }
         
-        .meta-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000; }
+        .meta-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000; flex-shrink: 0; }
         .meta-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
 
-        .meta-grid { width: 100%; border-top: 1px solid #eee; display: grid; gap: 2px; background: #eee; }
+        /* 多圖網格系統 */
+        .meta-grid { width: 100%; border-top: 1px solid #eee; display: grid; gap: 2px; background: #eee; flex-shrink: 0; }
         .meta-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .meta-grid-1 img { max-height: 320px; }
-        .meta-grid-2 { grid-template-columns: 1fr 1fr; grid-auto-rows: 250px; }
-        .meta-grid-3 { grid-template-columns: 1fr 1fr; grid-template-rows: 200px 150px; }
-        .meta-grid-3 img:nth-child(1) { grid-column: span 2; }
-        .meta-grid-4 { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
-        .meta-grid-5 { grid-template-columns: repeat(6, 1fr); grid-template-rows: 180px 120px; }
-        .meta-grid-5 .img-1, .meta-grid-5 .img-2 { grid-column: span 3; }
-        .meta-grid-5 .img-3, .meta-grid-5 .img-4, .meta-grid-5 .img-5 { grid-column: span 2; }
-        .meta-grid-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.5rem; font-weight: bold; }
+        .meta-grid-1 img { max-height: 300px; }
+        .meta-grid-2 { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
+        .meta-grid-3 { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 120px; }
+        .meta-grid-3 div:nth-child(1) { grid-column: span 2; }
+        .meta-grid-4 { grid-template-columns: 1fr 1fr; grid-auto-rows: 140px; }
+        .meta-grid-5 { grid-template-columns: repeat(6, 1fr); grid-template-rows: 150px 100px; }
+        .meta-grid-5 .grid-item-0, .meta-grid-5 .grid-item-1 { grid-column: span 3; }
+        .meta-grid-5 .grid-item-2, .meta-grid-5 .grid-item-3, .meta-grid-5 .grid-item-4 { grid-column: span 2; }
+        .meta-grid-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.4rem; font-weight: bold; pointer-events: none; }
 
-        .meta-footer { padding: 12px; border-top: 1px solid #eee; margin-top: auto; }
-        .meta-stats { font-size: 0.75rem; color: #65676b; margin-bottom: 10px; }
-        .meta-actions { display: flex; justify-content: space-between; border-top: 1px solid #ced0d4; padding-top: 10px; color: #65676b; font-size: 0.8rem; font-weight: bold; }
+        .meta-footer { padding: 12px; border-top: 1px solid #eee; margin-top: auto; flex-shrink: 0; }
+        .meta-stats { font-size: 0.7rem; color: #65676b; margin-bottom: 8px; }
+        .meta-actions { display: flex; justify-content: space-between; border-top: 1px solid #ced0d4; padding-top: 8px; color: #65676b; font-size: 0.75rem; font-weight: bold; }
 
         /* LINE 貼文樣式 */
         .line-post-container { background: #8bacd1; width: 100%; height: 100%; display: flex; flex-direction: column; text-align: left; }
-        .line-date { text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px; }
-        .line-message-row { display: flex; align-items: flex-start; gap: 8px; padding: 0 10px; }
+        .line-message-row { display: flex; align-items: flex-start; gap: 8px; padding: 0 10px; margin-top: 5px; }
         .line-avatar { width: 34px; height: 34px; border-radius: 50%; background: #eee; flex-shrink: 0; border: 1px solid #ddd; object-fit: cover; }
         .line-bubble-group { display: flex; flex-direction: column; gap: 8px; max-width: 80%; }
         .line-name { font-size: 0.7rem; color: #fff; margin-bottom: 2px; }
@@ -135,18 +129,15 @@
         .line-image-bubble img { width: 100%; display: block; }
         .line-text-bubble { background: #fff; padding: 10px 14px; border-radius: 16px; border-top-left-radius: 4px; font-size: 0.85rem; color: #111; line-height: 1.4; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
-        /* Web App 專案區塊 */
+        /* Web App 與其他按鈕頁籤 */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
-        .interactive-section h2 { margin-bottom: 10px; font-size: 2rem; }
-        .interactive-section p { margin-bottom: 30px; color: #666; }
         .tabs { margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
         .tab-btn { padding: 10px 20px; cursor: pointer; border: 2px solid #000; background: transparent; border-radius: 30px; font-weight: bold; font-size: 0.9rem; transition: all 0.3s ease; }
         .tab-btn.active, .tab-btn:hover { background: #000; color: #fff; }
-        .tab-content { display: none; width: 100%; max-width: 900px; margin: 0 auto; height: 600px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #fff;}
+        .tab-content { display: none; width: 100%; max-width: 900px; margin: 0 auto; height: 600px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: #fff; }
         .tab-content.active { display: block; }
         iframe { width: 100%; height: 100%; border: none; }
         
-        /* Footer */
         footer { text-align: center; padding: 60px 20px; background: #222; color: #fff; }
         .copyright { font-size: 0.8rem; color: #777; margin-top: 20px; }
     </style>
@@ -230,7 +221,7 @@
 
     <section id="sns-design" class="sns-section" style="background-color: #f9fafb;">
         <h2>社群與官方帳號視覺企劃</h2>
-        <p>模擬真實手機瀏覽情境（支援上下捲動查看長文案）。</p>
+        <p>模擬真實手機瀏覽情境（支援上下捲動與左右滑動切換）。</p>
 
         <div class="tabs">
             <button class="tab-btn sns-tab-btn active" onclick="switchPhoneTab(event, 'tab-posts', '#f9fafb')">動態貼文企劃</button>
@@ -254,7 +245,7 @@
                     <div class="scrollable-content">
                         <div class="line-date">今天 10:00</div>
                         <div class="line-message-row">
-                            <img src="sns-posts/avatar.png" class="line-avatar" onerror="this.style.display='none'">
+                            <img src="sns-posts/avatar.png" class="line-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Brand&background=0D8ABC&color=fff'">
                             <div class="line-bubble-group">
                                 <div class="line-name">官方帳號</div>
                                 <div class="line-text-bubble">歡迎！請左右滑動下方選單查看各項服務 👇</div>
@@ -294,14 +285,14 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        // 平面作品資料
+        // 平面作品資料庫
         const projectsData = [{ title: "旅用盥洗包說明設計", category: "排版與包裝設計", driveId: "1Tc-if0now_3eBUmt1Letbk0GoFnPX3fX" }];
         const grid = document.getElementById('portfolio-grid');
         projectsData.forEach(item => {
             grid.innerHTML += `<div class="project-card"><img src="https://drive.google.com/uc?export=view&id=${item.driveId}" class="project-image"><div class="project-info"><h3>${item.title}</h3><p>${item.category}</p></div></div>`;
         });
 
-        // 通用頁籤切換
+        // 頁籤切換邏輯
         function openTab(evt, tabName) {
             document.querySelectorAll("#interactive .tab-content").forEach(t => t.classList.remove("active"));
             document.querySelectorAll("#interactive .tab-btn").forEach(b => b.classList.remove("active"));
@@ -309,7 +300,6 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // 手機區塊切換
         function switchPhoneTab(evt, tabId, bgColor) {
             document.getElementById('sns-design').style.backgroundColor = bgColor;
             document.querySelectorAll(".phone-tab-content").forEach(t => t.classList.remove("active"));
@@ -319,17 +309,67 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            // 社群資料庫
+            
+            // ★ 合併你的正式圖片路徑與我的新版渲染邏輯 ★
             const snsData = [
-                { type: "meta-video", avatar: "sns-posts/avatar.png", name: "山陽產業集團｜三隆國際", time: "剛剛", caption: "高級旅宿愛用「隱形懸浮壁掛架」來了！\n✔️無料供應：全額吸收成本，免費使用。", videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s?si=pGvjHMTZxJDHWOV-", likes: "88" },
-                { type: "meta", avatar: "sns-posts/avatar.png", name: "山陽產業集團｜三隆國際", time: "2小時前", caption: "【2026浴室備品新標準】\n極致隱形：無外露鎖點，視覺清爽。\n靈活安裝：黏貼/打孔皆可。", images: ["sns-posts/post1-1.jpg","sns-posts/post1-2.jpg","sns-posts/post1-3.jpg","sns-posts/post1-4.jpg","sns-posts/post1-5.jpg","sns-posts/post1-6.jpg"], likes: "128" },
-                { type: "line", avatar: "sns-posts/avatar.png", name: "三隆國際", date: "今天 10:00", messages: [{ type: "image", imgSrc: "sns-posts/line-post.jpg" }, { type: "text", text: "新的一年平安順心，生意興隆人團圓 🧧" }] }
+                {
+                    type: "meta-video", 
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "剛剛 · 🌎",
+                    caption: "國外高級飯店旅宿愛用款，詢問度超高的「隱形懸浮壁掛架」來了！\n\n【自有品牌契約客戶－限定禮遇】凡符合專案簽約資格，即能享有：\n✔️ 隱形懸浮壁掛架：極簡設計，彷彿漂浮於牆面。\n✔️ 無料供應：由我們全額吸收硬體成本，免費提供使用。\n\n👇 35秒精彩影片搶先看",
+                    videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s?si=pGvjHMTZxJDHWOV-", 
+                    likes: "88"
+                },
+                {
+                    type: "meta",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "2小時前 · 🌎",
+                    caption: "【2026浴室備品新標準】把支架變不見，讓質感再升級！\n\n您精心挑選的浴室磁磚與牆面，不該被笨重的支架遮擋。 我們全新的解決方案，將進一步提升您的空間質感✨\n\n🔹 極致隱形：無外露鎖點托架，視覺清爽\n🔹 靈活安裝：黏貼/打孔皆可，附定位紙輕鬆搞定\n🔹 客製搭配：可選配專屬壓克力成分說明背板\n\n🎁【新春最大方．契約客戶獨享】\n新簽約使用「三隆自有品牌洗沐產品」，不限房間數量，通通 #免費供應！\n首批一月初到貨，數量有限，把握機會！\n\n📞 升級專線：0800-335-666 或私訊我們",
+                    images: [
+                        "sns-posts/bottle_01.png", "sns-posts/bottle_02.png", "sns-posts/bottle_03.png", "sns-posts/bottle_04.png", "sns-posts/bottle_05.png"
+                    ],
+                    likes: "188"
+                },
+                {
+                    type: "meta",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "昨天上午 10:00 · 🌎",
+                    caption: "【新品入荷｜SPA整復按摩推拿用品】\n最挺你的營業支援就找三隆國際，我們有：\n🔹 星級飯店毛浴巾：親膚觸感。\n🔹 橄欖雪松精華：質地好推不油膩。\n🔹 自有品牌清潔劑：高CP值選擇。",
+                    images: ["sns-posts/01.png"], 
+                    likes: "256"
+                },
+                {
+                    type: "meta",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "2月23日上午 9:00 · 🌎",
+                    caption: "🧨 新春恭喜！祝福各位新的一年龍馬精神、業績與財運都一馬當先！\n\n⚠️ 溫馨提醒：歡迎洽詢獲取年前最後叫貨資訊喔！",
+                    images: ["sns-posts/02.png"], 
+                    likes: "312"
+                },
+                {
+                    type: "line",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "三隆國際",
+                    date: "今天 10:00",
+                    messages: [
+                        { type: "image", imgSrc: "sns-posts/line-post.jpg" }, 
+                        { type: "text", text: "過了元宵，年就算真正過完了🏮 新的一年祝各位平安順心！" }
+                    ]
+                }
             ];
 
             const snsWrapper = document.getElementById('sns-wrapper');
             let generatedHtml = '';
+            
             snsData.forEach(post => {
                 let innerContent = '';
+                let errHandler = "onerror=\"this.style.display='none';\"";
+                let avatarErr = "onerror=\"this.src='https://ui-avatars.com/api/?name=Brand&background=0D8ABC&color=fff'\"";
+
                 if (post.type === 'meta') {
                     let imgLen = post.images ? post.images.length : 0;
                     let gridHtml = '';
@@ -338,26 +378,36 @@
                         gridHtml = `<div class="meta-grid meta-grid-${cls}">`;
                         post.images.slice(0, 5).forEach((src, idx) => {
                             let overlay = (idx === 4 && imgLen > 5) ? `<div class="meta-grid-overlay">+${imgLen - 5}</div>` : '';
-                            gridHtml += `<div style="position:relative"><img src="${src}" class="img-${idx+1}">${overlay}</div>`;
+                            gridHtml += `<div style="position:relative" class="grid-item-${idx}"><img src="${src}" ${errHandler}>${overlay}</div>`;
                         });
                         gridHtml += `</div>`;
                     }
-                    innerContent = `<div class="meta-post"><div class="meta-header"><img src="${post.avatar}" class="meta-avatar"><div class="meta-info"><div class="meta-name">${post.name}</div><div class="meta-time">${post.time}</div></div></div><div class="meta-caption">${post.caption}</div>${gridHtml}</div>`;
+                    innerContent = `<div class="meta-post"><div class="meta-header"><img src="${post.avatar}" class="meta-avatar" ${avatarErr}><div class="meta-info"><div class="meta-name">${post.name}</div><div class="meta-time">${post.time}</div></div></div><div class="meta-caption">${post.caption}</div>${gridHtml}</div>`;
                 } else if (post.type === 'meta-video') {
-                    innerContent = `<div class="meta-post"><div class="meta-header"><img src="${post.avatar}" class="meta-avatar"><div class="meta-info"><div class="meta-name">${post.name}</div><div class="meta-time">${post.time}</div></div></div><div class="meta-caption">${post.caption}</div><div class="meta-video-wrapper"><iframe src="${post.videoUrl}" allowfullscreen></iframe></div></div>`;
+                    innerContent = `<div class="meta-post"><div class="meta-header"><img src="${post.avatar}" class="meta-avatar" ${avatarErr}><div class="meta-info"><div class="meta-name">${post.name}</div><div class="meta-time">${post.time}</div></div></div><div class="meta-caption">${post.caption}</div><div class="meta-video-wrapper"><iframe src="${post.videoUrl}" allowfullscreen></iframe></div></div>`;
                 } else if (post.type === 'line') {
                     let msgH = '';
                     post.messages.forEach(m => {
                         if (m.type === 'text') msgH += `<div class="line-text-bubble">${m.text}</div>`;
-                        else msgH += `<div class="line-image-bubble"><img src="${m.imgSrc}"></div>`;
+                        else msgH += `<div class="line-image-bubble"><img src="${m.imgSrc}" ${errHandler}></div>`;
                     });
-                    innerContent = `<div class="line-post-container" style="padding-top:40px"><div class="line-date">${post.date}</div><div class="line-message-row"><img src="${post.avatar}" class="line-avatar"><div class="line-bubble-group"><div class="line-name">${post.name}</div>${msgH}</div></div></div>`;
+                    innerContent = `<div class="line-post-container" style="padding-top:20px"><div class="line-date">${post.date}</div><div class="line-message-row"><img src="${post.avatar}" class="line-avatar" ${avatarErr}><div class="line-bubble-group"><div class="line-name">${post.name}</div>${msgH}</div></div></div>`;
                 }
-                generatedHtml += `<div class="swiper-slide"><div class="scrollable-content">${innerContent}<div class="meta-footer"><div class="meta-stats">👍 ${post.likes || 0}</div><div class="meta-actions"><div>👍 讚</div><div>💬 留言</div><div>↗️ 分享</div></div></div></div></div>`;
+
+                generatedHtml += `
+                    <div class="swiper-slide">
+                        <div class="scrollable-content">
+                            ${innerContent}
+                            <div class="meta-footer">
+                                <div class="meta-stats">👍 ${post.likes || 0} 個讚</div>
+                                <div class="meta-actions"><div>👍 讚</div><div>💬 留言</div><div>↗️ 分享</div></div>
+                            </div>
+                        </div>
+                    </div>`;
             });
             snsWrapper.innerHTML = generatedHtml;
 
-            // 圖文選單資料夾
+            // 圖文選單資料生成
             const richMenuWrapper = document.getElementById('rich-menu-wrapper');
             let rmHtml = '';
             for(let i=1; i<=14; i++) {
@@ -368,8 +418,21 @@
 
             // 初始化 Swipers
             new Swiper('.swiper-redesign', { pagination: { el: '.swiper-pagination', clickable: true } });
-            new Swiper('.swiper-sns', { pagination: { el: '.swiper-pagination', clickable: true }, observer: true, observeParents: true, touchStartPreventDefault: false });
-            new Swiper('.swiper-rich-menu', { autoplay: { delay: 3000 }, pagination: { el: '.swiper-pagination', clickable: true }, observer: true, observeParents: true });
+            
+            // 修正 Swiper 配置，加入對捲動內容的支援
+            new Swiper('.swiper-sns', { 
+                pagination: { el: '.swiper-pagination', clickable: true }, 
+                observer: true, 
+                observeParents: true,
+                touchStartPreventDefault: false // 重要：讓內部 scrollable-content 可以被觸發
+            });
+
+            new Swiper('.swiper-rich-menu', { 
+                autoplay: { delay: 4000 }, 
+                pagination: { el: '.swiper-pagination', clickable: true }, 
+                observer: true, 
+                observeParents: true 
+            });
         });
     </script>
 </body>
