@@ -24,16 +24,12 @@
         .hero p { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
         .btn { display: inline-block; padding: 12px 24px; background: #000; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; }
         
-        /* --- ★ 3D 劇院級影音展示區 ★ --- */
+        /* 3D 劇院級影音展示區 */
         .video-showcase-section { padding: 100px 5%; background: #111; color: #fff; text-align: center; }
         .video-showcase-section h2 { font-size: 2rem; margin-bottom: 15px; color: #fff; }
         .video-showcase-section > p { color: #ccc; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.6; }
 
-        .video-player-container { 
-            max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden; 
-            box-shadow: 0 25px 60px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1); background: #000;
-        }
-        
+        .video-player-container { max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.1); background: #000; }
         .video-player-container iframe { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; border: none; }
 
         .workflow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 900px; margin: 40px auto 0; }
@@ -43,7 +39,7 @@
         .workflow-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
         .workflow-card p { font-size: 0.85rem; color: #888; line-height: 1.5; margin-bottom: 0; }
 
-        /* --- ★ 產品型錄與情境視覺 (大網格版) ★ --- */
+        /* 產品型錄與情境視覺 */
         .portfolio-section { padding: 80px 5%; }
         .portfolio-section h2 { margin-bottom: 10px; text-align: center; font-size: 2rem; }
         .portfolio-section > p { text-align: center; color: #666; margin-bottom: 40px; }
@@ -56,7 +52,7 @@
         .project-info h3 { font-size: 1.3rem; margin-bottom: 8px; }
         .project-info p { color: #888; font-size: 0.95rem; }
         
-        /* --- Wix 改版特效區塊 --- */
+        /* Wix 改版特效區塊 */
         .redesign-section { padding: 80px 0; background: #fff; text-align: center; overflow: hidden; }
         .redesign-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .redesign-section p { color: #666; margin-bottom: 30px; }
@@ -76,23 +72,27 @@
         .swiper-button-next, .swiper-button-prev { color: #333; }
         .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
 
-        /* --- SNS 社群行銷區塊 (亮色背景) --- */
-        .sns-section { padding: 80px 5%; background: #f9fafb; color: #333; text-align: center; }
+        /* --- 整合版：社群與官方帳號展示區 --- */
+        .sns-section { padding: 80px 5%; color: #333; text-align: center; transition: background-color 0.4s ease; }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
-        .sns-section p { color: #666; margin-bottom: 40px; }
+        .sns-section p { color: #666; margin-bottom: 30px; }
 
-        /* 鈦金屬黑．超窄邊框 iPhone 17 Pro */
+        .phone-tab-content { display: none; animation: fadeIn 0.4s ease; }
+        .phone-tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
         .phone-mockup { width: 300px; height: 600px; background-color: #fff; border: 8px solid #111; border-radius: 46px; margin: 0 auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; z-index: 1; }
         .phone-mockup::after { content: ''; position: absolute; top: -8px; left: -8px; right: -8px; bottom: -8px; background-image: linear-gradient(90deg, #111 0%, #333 15%, #555 30%, #222 50%, #111 70%, #444 85%, #222 100%), repeating-linear-gradient(0deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px), repeating-linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 1px, transparent 1px, transparent 2px); background-blend-mode: overlay, normal; border-radius: 46px; z-index: -2; pointer-events: none; }
         .phone-mockup::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 38px; z-index: 0; pointer-events: none; }
         .dynamic-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 85px; height: 20px; background: #000; border-radius: 20px; z-index: 50; }
 
-        .swiper-sns { width: 100%; height: 100%; z-index: 10; }
+        .swiper-sns, .swiper-rich-menu { width: 100%; height: 100%; z-index: 10; }
         .swiper-sns .swiper-slide { background: #fff; }
         .swiper-sns .swiper-pagination-bullet { background: #000; opacity: 0.2; }
         .swiper-sns .swiper-pagination-bullet-active { background: #000; opacity: 0.8; }
+        .swiper-rich-menu .swiper-pagination-bullet-active { background: #333; }
 
-        /* --- 1. Meta 貼文樣板 --- */
+        /* Meta 貼文樣板 */
         .meta-post { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; color: #1c1e21; text-align: left; font-family: Helvetica, Arial, sans-serif; padding-top: 30px; }
         .meta-header { display: flex; align-items: center; padding: 12px; }
         .meta-avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; margin-right: 10px; object-fit: cover; }
@@ -107,7 +107,7 @@
         .meta-actions { display: flex; justify-content: space-between; border-top: 1px solid #ced0d4; padding-top: 10px; color: #65676b; font-size: 0.85rem; font-weight: bold; }
         .meta-action-btn { display: flex; align-items: center; gap: 6px; cursor: pointer; }
 
-        /* --- 2. LINE@ 官方帳號原生推播樣板 --- */
+        /* LINE 貼文樣板 */
         .line-post { background: #8bacd1; width: 100%; height: 100%; display: flex; flex-direction: column; padding: 15px; padding-top: 45px; padding-bottom: 40px; box-sizing: border-box; text-align: left; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-y: auto; scrollbar-width: none; }
         .line-post::-webkit-scrollbar { display: none; }
         .line-date { text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px; }
@@ -119,14 +119,7 @@
         .line-image-bubble img { width: 100%; display: block; object-fit: cover; }
         .line-text-bubble { background: #fff; padding: 12px 16px; border-radius: 18px; border-top-left-radius: 4px; font-size: 0.95rem; color: #111; width: fit-content; line-height: 1.5; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
-        /* --- ★ 新增：LINE 圖文選單展示區 ★ --- */
-        .rich-menu-section { padding: 80px 5%; background: #fff; text-align: center; }
-        .rich-menu-section h2 { font-size: 2rem; margin-bottom: 10px; }
-        .rich-menu-section p { color: #666; margin-bottom: 40px; }
-        
-        .swiper-rich-menu .swiper-pagination-bullet-active { background: #333; }
-
-        /* --- Web App 互動專案區塊 --- */
+        /* Web App 互動專案區塊 (共用 Tabs 樣式) */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
         .interactive-section h2 { margin-bottom: 10px; font-size: 2rem; }
         .interactive-section p { margin-bottom: 30px; color: #666; }
@@ -152,7 +145,6 @@
             <li><a href="#video-showcase">影音專案</a></li>
             <li><a href="#work">型錄與視覺</a></li>
             <li><a href="#sns-design">社群企劃</a></li>
-            <li><a href="#rich-menu">圖文選單</a></li>
             <li><a href="#interactive">Web App</a></li>
         </ul>
     </nav>
@@ -226,39 +218,41 @@
         </div>
     </section>
 
-    <section id="sns-design" class="sns-section">
-        <h2>社群媒體動態貼文企劃</h2>
-        <p>模擬真實手機瀏覽情境，展示 Meta 與 LINE 官方帳號原生推播介面，支援上下捲動與互動預覽。</p>
-        <div class="phone-mockup">
-            <div class="dynamic-island"></div>
-            <div class="swiper swiper-sns">
-                <div class="swiper-wrapper" id="sns-wrapper"></div>
-                <div class="swiper-pagination"></div>
+    <section id="sns-design" class="sns-section" style="background-color: #f9fafb;">
+        <h2>社群與官方帳號視覺企劃</h2>
+        <p>模擬真實手機瀏覽情境，展示雙平台動態貼文與客製化圖文選單介面。</p>
+
+        <div class="tabs">
+            <button class="tab-btn phone-tab-btn active" onclick="switchPhoneTab(event, 'tab-posts', '#f9fafb')">動態貼文企劃</button>
+            <button class="tab-btn phone-tab-btn" onclick="switchPhoneTab(event, 'tab-richmenu', '#eef5f9')">LINE 圖文選單</button>
+        </div>
+
+        <div id="tab-posts" class="phone-tab-content active">
+            <div class="phone-mockup">
+                <div class="dynamic-island"></div>
+                <div class="swiper swiper-sns">
+                    <div class="swiper-wrapper" id="sns-wrapper"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <section id="rich-menu" class="rich-menu-section">
-        <h2>LINE 官方帳號圖文選單設計</h2>
-        <p>針對品牌需求客製化之 LINE 底部圖文選單，結合直覺的視覺引導與互動熱區規劃，提升官方帳號點擊率與用戶體驗。</p>
-        
-        <div class="phone-mockup">
-            <div class="dynamic-island"></div>
-            <div class="line-screen" style="width: 100%; height: 100%; background: #8bacd1; border-radius: 38px; position: relative; overflow: hidden;">
-                
-                <div style="padding: 60px 15px 0;">
-                    <div class="line-date" style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px;">今天 10:00</div>
-                    <div class="line-text-bubble" style="background: #fff; padding: 12px 16px; border-radius: 16px; border-top-left-radius: 4px; font-size: 0.85rem; width: fit-content; margin-top: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-                        歡迎！請滑動下方選單查看各項服務 👇
+        <div id="tab-richmenu" class="phone-tab-content">
+            <div class="phone-mockup">
+                <div class="dynamic-island"></div>
+                <div class="line-screen" style="width: 100%; height: 100%; background: #8bacd1; border-radius: 38px; position: relative; overflow: hidden;">
+                    <div style="padding: 60px 15px 0;">
+                        <div class="line-date" style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px;">今天 10:00</div>
+                        <div class="line-text-bubble" style="background: #fff; padding: 12px 16px; border-radius: 16px; border-top-left-radius: 4px; font-size: 0.85rem; width: fit-content; margin-top: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                            歡迎！請滑動下方選單查看各項服務 👇
+                        </div>
+                    </div>
+                    <div class="swiper swiper-rich-menu" style="position: absolute; bottom: 0; left: 0; width: 100%; padding-bottom: 25px; background: #fff; box-shadow: 0 -4px 15px rgba(0,0,0,0.1);">
+                        <div class="swiper-wrapper" id="rich-menu-wrapper">
+                            </div>
+                        <div class="swiper-pagination" style="bottom: 5px;"></div>
                     </div>
                 </div>
-
-                <div class="swiper swiper-rich-menu" style="position: absolute; bottom: 0; left: 0; width: 100%; padding-bottom: 25px; background: #fff; box-shadow: 0 -4px 15px rgba(0,0,0,0.1);">
-                    <div class="swiper-wrapper" id="rich-menu-wrapper">
-                        </div>
-                    <div class="swiper-pagination" style="bottom: 5px;"></div>
-                </div>
-
             </div>
         </div>
     </section>
@@ -318,18 +312,40 @@
                 </div>`;
         });
 
-        // --- 2. 網頁頁籤切換邏輯 ---
+        // --- 2. 網頁 Web App 頁籤切換邏輯 ---
         function openTab(evt, tabName) {
             let i, tabcontent, tablinks;
             tabcontent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabcontent.length; i++) { tabcontent[i].classList.remove("active"); }
-            tablinks = document.getElementsByClassName("tab-btn");
+            tablinks = document.querySelectorAll("#interactive .tab-btn");
             for (i = 0; i < tablinks.length; i++) { tablinks[i].classList.remove("active"); }
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
 
-        // --- 3. DOM 載入後執行：各區域資料生成與初始化 ---
+        // --- ★ 3. 社群手機區塊頁籤切換邏輯 (含背景變色) ★ ---
+        function switchPhoneTab(evt, tabId, bgColor) {
+            // 切換區塊背景色
+            document.getElementById('sns-design').style.backgroundColor = bgColor;
+            
+            // 隱藏所有手機頁籤內容
+            let tabContents = document.getElementsByClassName("phone-tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+            
+            // 移除所有按鈕的 active 狀態
+            let tabLinks = document.getElementsByClassName("phone-tab-btn");
+            for (let i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].classList.remove("active");
+            }
+            
+            // 顯示當前點擊的頁籤與按鈕狀態
+            document.getElementById(tabId).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // --- 4. DOM 載入後執行：各區域資料生成與初始化 ---
         document.addEventListener('DOMContentLoaded', function () {
             
             // 社群貼文資料庫
@@ -395,7 +411,6 @@
                         }
                     });
 
-                    // 移除錯誤 placeholder
                     generatedHtml += `
                         <div class="swiper-slide">
                             <div class="line-post">
@@ -414,8 +429,7 @@
             });
             if(snsWrapper) snsWrapper.innerHTML = generatedHtml;
 
-            // ★ 圖文選單資料庫生成 (14張 PNG) ★
-            // 修正：已拔除會導致網頁無盡轉圈的外部 Placeholder 圖片
+            // 圖文選單資料庫生成
             const richMenuData = [
                 { imgSrc: "rich-menu/01.png", title: "圖文選單 01" },
                 { imgSrc: "rich-menu/02.png", title: "圖文選單 02" },
@@ -458,13 +472,16 @@
                 grabCursor: true, spaceBetween: 0, loop: true, 
                 autoplay: { delay: 5000, disableOnInteraction: false }, 
                 pagination: { el: '.swiper-sns .swiper-pagination', clickable: true },
+                observer: true,       // 確保在 hidden 狀態下切換顯示時能重新計算尺寸
+                observeParents: true
             });
 
-            // 初始化圖文選單輪播
             const swiperRichMenu = new Swiper('.swiper-rich-menu', {
                 grabCursor: true, loop: true, spaceBetween: 0,
                 autoplay: { delay: 4000, disableOnInteraction: false },
-                pagination: { el: '.swiper-rich-menu .swiper-pagination', clickable: true }
+                pagination: { el: '.swiper-rich-menu .swiper-pagination', clickable: true },
+                observer: true,       // 確保在 hidden 狀態下切換顯示時能重新計算尺寸
+                observeParents: true
             });
 
         });
