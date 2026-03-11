@@ -599,16 +599,15 @@
 
             // 社群手機滑動配置
 const swiperSns = new Swiper('.swiper-sns', {
-    grabCursor: false,         // 建議設為 false，避免滑動時鼠標圖示干擾
-    spaceBetween: 0,
     loop: true,
     pagination: { el: '.swiper-sns .swiper-pagination', clickable: true },
-    
-    // 以下是解決上下滑動失效的關鍵參數
-    observer: true,           // 當 Swiper 的內容發生變化時自動重整
-    observeParents: true,     // 當父元素變化時自動重整
-    threshold: 15,            // 至少滑動 15px 才會觸發左右切換，避免太靈敏導致無法上下捲動
-    touchStartPreventDefault: false, // 允許觸控起始不被阻斷，這對 iOS 捲動非常重要
+    observer: true,
+    observeParents: true,
+
+    /* --- 下面這三行是解決手勢衝突的關鍵 --- */
+    threshold: 15,                 // 滑動超過 15px 才判斷為左右切換
+    touchMoveStopPropagation: false, // 允許垂直滑動信號傳遞給內部貼文
+    touchStartPreventDefault: false, // 允許觸控起始，不阻斷原生行為
 });
 
             // 圖文選單輪播配置
