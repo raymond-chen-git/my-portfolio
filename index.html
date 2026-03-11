@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
     <style>
-        /* --- 基礎樣式 --- */
+        /* --- 基礎樣式與語氣調整 --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Helvetica Neue', Arial, '微軟正黑體', sans-serif; }
         body { background-color: #FAFAFA; color: #333; line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
         
@@ -23,11 +23,10 @@
         .hero p { font-size: 1.2rem; color: #666; margin-bottom: 30px; }
         .btn { display: inline-block; padding: 12px 24px; background: #000; color: #fff; text-decoration: none; border-radius: 30px; font-weight: bold; }
 
-        /* --- Wix 比例優化區塊 --- */
+        /* --- Wix 區塊比例優化 (縮小灰色塊狀) --- */
         .redesign-section { padding: 80px 0; background: #fff; text-align: center; overflow: hidden; }
         .redesign-showcase-container { width: 100%; max-width: 800px; margin: 0 auto; position: relative; }
         .swiper-redesign { width: 100%; padding: 20px 0 40px 0; }
-        /* 縮小灰色塊狀尺寸與間距 */
         .swiper-slide-wix { width: 280px !important; height: auto; display: flex; justify-content: center; align-items: center; background-color: transparent !important; }
         .comparison-box { position: relative; width: 100%; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: all 0.5s ease; filter: grayscale(80%) brightness(60%) blur(3px); transform: scale(0.85); opacity: 0.7; }
         .swiper-slide-active .comparison-box { filter: grayscale(0%) brightness(100%) blur(0px); transform: scale(1); opacity: 1; box-shadow: 0 15px 40px rgba(0,0,0,0.2); }
@@ -35,38 +34,40 @@
         .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
         .comparison-label { position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.8); color: #fff; padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; z-index: 10; font-weight: bold; }
 
-        /* --- 社群與手機 UI 整合區 --- */
+        /* --- 社群與手機 UI 整合區 (修正滑動邏輯) --- */
         .sns-section { padding: 80px 5%; text-align: center; transition: 0.4s; }
         .sns-section h2 { font-size: 2rem; margin-bottom: 10px; }
         .tabs { margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
         .tab-btn { padding: 10px 25px; cursor: pointer; border: 2px solid #000; background: transparent; border-radius: 30px; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
         .tab-btn.active { background: #000; color: #fff; }
 
-        /* 手機外殼 */
-        .phone-mockup { width: 300px; height: 600px; background-color: #fff; border: 8px solid #111; border-radius: 46px; margin: 0 auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; }
+        .phone-mockup { width: 300px; height: 600px; background-color: #fff; border: 8px solid #111; border-radius: 46px; margin: 0 auto; position: relative; box-shadow: 0 15px 40px rgba(0,0,0,0.1); overflow: hidden; z-index: 1; }
         .dynamic-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 85px; height: 20px; background: #000; border-radius: 20px; z-index: 50; }
 
-        /* ★ 核心修正：停用滑鼠滾輪，僅啟動抓取滑動 ★ */
+        /* ★ 修正：停用原生捲動，強化抓取手感 ★ */
         .scrollable-content { 
             width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; 
             padding-top: 45px; padding-bottom: 40px; 
             cursor: grab; -webkit-overflow-scrolling: touch; 
             scrollbar-width: none;
-            user-select: none; /* 防止滑動時選取到文字 */
+            user-select: none;
         }
         .scrollable-content::-webkit-scrollbar { display: none; }
         .scrollable-content:active { cursor: grabbing; }
 
-        /* Meta 貼文細節修正 */
+        /* Meta 貼文細節與計數對齊 */
         .meta-post { background: #fff; width: 100%; min-height: 100%; display: flex; flex-direction: column; color: #1c1e21; text-align: left; }
-        .meta-header { display: flex; align-items: center; padding: 12px; }
+        .meta-header { display: flex; align-items: center; padding: 12px; flex-shrink: 0; }
         .meta-avatar { width: 36px; height: 36px; border-radius: 50%; margin-right: 10px; border: 1px solid #ddd; object-fit: cover; }
-        .meta-name { font-weight: bold; font-size: 0.8rem; }
+        .meta-name { font-weight: bold; font-size: 0.8rem; line-height: 1.2; }
         .meta-time { font-size: 0.65rem; color: #65676b; }
         .meta-caption { padding: 0 12px 12px; font-size: 0.8rem; line-height: 1.5; white-space: pre-wrap; }
         
-        /* 多圖網格演算 */
-        .meta-grid { width: 100%; display: grid; gap: 2px; background: #eee; }
+        .meta-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000; flex-shrink: 0; }
+        .meta-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        /* 多圖網格系統 */
+        .meta-grid { width: 100%; display: grid; gap: 2px; background: #eee; flex-shrink: 0; }
         .meta-grid img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .meta-grid-1 img { max-height: 300px; }
         .meta-grid-2 { grid-template-columns: 1fr 1fr; grid-auto-rows: 200px; }
@@ -76,25 +77,21 @@
         .meta-grid-5 { grid-template-columns: repeat(6, 1fr); grid-template-rows: 150px 100px; }
         .meta-grid-5 .grid-item-0, .meta-grid-5 .grid-item-1 { grid-column: span 3; }
         .meta-grid-5 .grid-item-2, .meta-grid-5 .grid-item-3, .meta-grid-5 .grid-item-4 { grid-column: span 2; }
-        .meta-grid-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.4rem; font-weight: bold; }
+        .meta-grid-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); color: #fff; display: flex; justify-content: center; align-items: center; font-size: 1.4rem; font-weight: bold; pointer-events: none; }
 
-        /* ★ 修正：讚數計數置左回歸 ★ */
-        .meta-footer { padding: 12px; border-top: 1px solid #eee; margin-top: auto; display: flex; flex-direction: column; align-items: flex-start; }
-        .meta-stats { font-size: 0.75rem; color: #65676b; margin-bottom: 8px; width: 100%; text-align: left; }
+        /* ★ 修正：讚數計數重新強制靠左 ★ */
+        .meta-footer { padding: 12px; border-top: 1px solid #eee; margin-top: auto; display: flex; flex-direction: column; align-items: flex-start; text-align: left; }
+        .meta-stats { font-size: 0.7rem; color: #65676b; margin-bottom: 8px; width: 100%; }
         .meta-actions { display: flex; justify-content: space-between; border-top: 1px solid #ced0d4; padding-top: 8px; color: #65676b; font-size: 0.75rem; font-weight: bold; width: 100%; }
 
-        /* LINE 樣式 */
+        /* LINE 貼文 */
         .line-post-container { background: #8bacd1; width: 100%; min-height: 100%; display: flex; flex-direction: column; text-align: left; }
         .line-message-row { display: flex; align-items: flex-start; gap: 8px; padding: 0 10px; margin-top: 10px; }
         .line-avatar { width: 34px; height: 34px; border-radius: 50%; background: #eee; flex-shrink: 0; object-fit: cover; }
         .line-bubble-group { display: flex; flex-direction: column; gap: 8px; max-width: 80%; }
         .line-text-bubble { background: #fff; padding: 10px 14px; border-radius: 16px; border-top-left-radius: 4px; font-size: 0.85rem; color: #111; line-height: 1.4; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
-        /* --- 其他區塊 (簡化顯示) --- */
-        .video-showcase-section { padding: 100px 5%; background: #111; color: #fff; text-align: center; }
-        .video-player-container { max-width: 900px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.8); }
-        .video-player-container iframe { width: 100%; aspect-ratio: 16/9; display: block; border: none; }
-
+        /* --- 其他區塊 --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; padding: 0 5%; }
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
         .tab-content { display: none; width: 100%; max-width: 900px; margin: 0 auto; height: 600px; border-radius: 16px; overflow: hidden; background: #fff; }
@@ -123,7 +120,6 @@
 
     <section id="video-showcase" class="video-showcase-section">
         <h2>突破限制：AI 輔助 3D 產品影音企劃</h2>
-        <p>導入 AI 輔助學習機制，完成 3D 建模、材質打光至動態剪輯的完整工作流。</p>
         <div class="video-player-container">
             <iframe src="https://www.youtube.com/embed/YSjs1NwxX3s?si=pGvjHMTZxJDHWOV-" allowfullscreen></iframe>
         </div>
@@ -185,16 +181,17 @@
             <div class="phone-mockup">
                 <div class="dynamic-island"></div>
                 <div class="line-post-container">
-                    <div class="scrollable-content" onwheel="return false;"> <div class="line-date" style="text-align:center; padding-top:20px; color:#fff; font-size:0.7rem;">今天 10:00</div>
+                    <div class="scrollable-content" onwheel="return false;">
+                        <div class="line-date" style="text-align:center; padding-top:20px; color:#fff; font-size:0.7rem;">今天 10:00</div>
                         <div class="line-message-row">
-                            <img src="sns-posts/avatar.png" class="line-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Rich&background=00B900&color=fff'">
+                            <img src="sns-posts/avatar.png" class="line-avatar" onerror="this.src='https://ui-avatars.com/api/?name=Brand&background=00B900&color=fff'">
                             <div class="line-bubble-group">
-                                <div class="line-name">官方帳號</div>
+                                <div class="line-name" style="color:#fff; font-size:0.7rem;">官方帳號</div>
                                 <div class="line-text-bubble">歡迎！請左右滑動下方選單查看 👇</div>
                             </div>
                         </div>
                     </div>
-                    <div class="swiper swiper-rich-menu" style="position: absolute; bottom: 0; left: 0; width: 100%; padding-bottom: 25px; background: #fff;">
+                    <div class="swiper swiper-rich-menu" style="position: absolute; bottom: 0; left: 0; width: 100%; padding-bottom: 25px; background: #fff; box-shadow: 0 -4px 10px rgba(0,0,0,0.1);">
                         <div class="swiper-wrapper" id="rich-menu-wrapper"></div>
                         <div class="swiper-pagination" style="bottom: 5px;"></div>
                     </div>
@@ -229,7 +226,6 @@
             grid.innerHTML += `<div class="project-card"><img src="https://drive.google.com/uc?export=view&id=${item.driveId}" class="project-image" style="width:100%;"><div class="project-info"><h3>${item.title}</h3><p>${item.category}</p></div></div>`;
         });
 
-        // 頁籤邏輯
         function openTab(evt, tabName) {
             document.querySelectorAll("#interactive .tab-content").forEach(t => t.classList.remove("active"));
             document.querySelectorAll("#interactive .tab-btn").forEach(b => b.classList.remove("active"));
@@ -246,19 +242,65 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            // 社群資料
+            
+            // ★ 合併後的最完整資料庫 (包含正確檔名) ★
             const snsData = [
-                { type: "meta-video", avatar: "sns-posts/avatar.png", name: "山陽產業集團｜三隆國際", time: "剛剛", caption: "高級旅宿愛用「隱形懸浮壁掛架」來了！\n✔️無料供應：全額吸收成本，免費使用。", videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s", likes: "88" },
-                { type: "meta", avatar: "sns-posts/avatar.png", name: "山陽產業集團｜三隆國際", time: "2小時前", caption: "【2026浴室備品新標準】\n把支架變不見，質感再升級！", images: ["sns-posts/bottle_01.png", "sns-posts/bottle_02.png", "sns-posts/bottle_03.png", "sns-posts/bottle_04.png", "sns-posts/bottle_05.png"], likes: "188" },
-                { type: "line", avatar: "sns-posts/avatar.png", name: "三隆國際", date: "今天 10:00", messages: [{ type: "image", imgSrc: "sns-posts/line-post.jpg" }, { type: "text", text: "過了元宵，年就算真正過完了🏮" }] }
+                {
+                    type: "meta-video", 
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際",
+                    time: "剛剛",
+                    caption: "高級旅宿愛用「隱形懸浮壁掛架」來了！\n✔️無料供應：全額吸收成本，免費使用。",
+                    videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s", 
+                    likes: "88"
+                },
+                {
+                    type: "meta",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際",
+                    time: "2小時前",
+                    caption: "【2026浴室備品新標準】\n把支架變不見，質感再升級！",
+                    images: ["sns-posts/bottle_01.png", "sns-posts/bottle_02.png", "sns-posts/bottle_03.png", "sns-posts/bottle_04.png", "sns-posts/bottle_05.png"], 
+                    likes: "188"
+                },
+                {
+                    type: "meta",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際",
+                    time: "昨天",
+                    caption: "新品入荷｜SPA整復按摩用品\n一站式採購解決購買決策。",
+                    images: ["sns-posts/01.png"], 
+                    likes: "256"
+                },
+                {
+                    type: "meta",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "山陽產業集團｜三隆國際",
+                    time: "上週",
+                    caption: "新春恭喜！祝福各位馬年龍馬精神！",
+                    images: ["sns-posts/02.png"], 
+                    likes: "312"
+                },
+                {
+                    type: "line",
+                    avatar: "sns-posts/avatar.png", 
+                    name: "三隆國際",
+                    date: "今天 10:00",
+                    messages: [
+                        { type: "image", imgSrc: "sns-posts/line-post.jpg" }, 
+                        { type: "text", text: "過了元宵，年就算真正過完了🏮 祝各位平安順心！" }
+                    ]
+                }
             ];
 
             const snsWrapper = document.getElementById('sns-wrapper');
             let generatedHtml = '';
+            
             snsData.forEach(post => {
                 let innerContent = '';
                 let avatarErr = "onerror=\"this.src='https://ui-avatars.com/api/?name=Brand&background=0D8ABC&color=fff'\"";
-                
+                let errHandler = "onerror=\"this.style.display='none'\"";
+
                 if (post.type === 'meta') {
                     let imgLen = post.images ? post.images.length : 0;
                     let gridHtml = '';
@@ -267,7 +309,7 @@
                         gridHtml = `<div class="meta-grid meta-grid-${cls}">`;
                         post.images.slice(0, 5).forEach((src, idx) => {
                             let overlay = (idx === 4 && imgLen > 5) ? `<div class="meta-grid-overlay">+${imgLen - 5}</div>` : '';
-                            gridHtml += `<div style="position:relative" class="grid-item-${idx}"><img src="${src}" onerror="this.style.display='none'">${overlay}</div>`;
+                            gridHtml += `<div style="position:relative" class="grid-item-${idx}"><img src="${src}" ${errHandler}>${overlay}</div>`;
                         });
                         gridHtml += `</div>`;
                     }
@@ -278,37 +320,36 @@
                     let msgH = '';
                     post.messages.forEach(m => {
                         if (m.type === 'text') msgH += `<div class="line-text-bubble">${m.text}</div>`;
-                        else msgH += `<div class="line-image-bubble"><img src="${m.imgSrc}" onerror="this.style.display='none'"></div>`;
+                        else msgH += `<div class="line-image-bubble"><img src="${m.imgSrc}" ${errHandler}></div>`;
                     });
-                    innerContent = `<div class="line-post-container" style="padding-top:20px"><div class="line-message-row"><img src="${post.avatar}" class="line-avatar" ${avatarErr}><div class="line-bubble-group"><div class="line-name">${post.name}</div>${msgH}</div></div></div>`;
+                    innerContent = `<div class="line-post-container" style="padding-top:20px"><div class="line-message-row"><img src="${post.avatar}" class="line-avatar" ${avatarErr}><div class="line-bubble-group"><div class="line-name" style="color:#fff; font-size:0.7rem;">${post.name}</div>${msgH}</div></div></div>`;
                 }
-                // 讚數回歸置左
+
                 generatedHtml += `<div class="swiper-slide"><div class="scrollable-content" onwheel="return false;">${innerContent}<div class="meta-footer"><div class="meta-stats">👍 ${post.likes || 0} 個讚</div><div class="meta-actions"><div>👍 讚</div><div>💬 留言</div><div>↗️ 分享</div></div></div></div></div>`;
             });
             snsWrapper.innerHTML = generatedHtml;
 
-            // 圖文選單
+            // 圖文選單生成
             const richMenuWrapper = document.getElementById('rich-menu-wrapper');
             let rmHtml = '';
             for(let i=1; i<=14; i++) {
                 let n = i.toString().padStart(2, '0');
-                rmHtml += `<div class="swiper-slide"><img src="rich-menu/${n}.png" style="width:100%;" onerror="this.style.display='none'"></div>`;
+                rmHtml += `<div class="swiper-slide"><img src="rich-menu/${n}.png" style="width:100%; display:block;" onerror="this.style.display='none'"></div>`;
             }
             richMenuWrapper.innerHTML = rmHtml;
 
-            // 初始化 Swiper，設定阻止預設行為以利內部抓取滑動
+            // 初始化 Swipers
             new Swiper('.swiper-redesign', { pagination: { el: '.swiper-pagination', clickable: true } });
             new Swiper('.swiper-sns', { 
                 pagination: { el: '.swiper-pagination', clickable: true }, 
                 observer: true, observeParents: true, touchStartPreventDefault: false 
             });
             new Swiper('.swiper-rich-menu', { 
-                autoplay: { delay: 4000 }, 
-                pagination: { el: '.swiper-pagination', clickable: true }, 
+                autoplay: { delay: 4000 }, pagination: { el: '.swiper-pagination', clickable: true }, 
                 observer: true, observeParents: true 
             });
 
-            // 禁止滑鼠滾輪在 scrollable-content 上的預設行為
+            // 確保所有手機內容層徹底禁用滾輪，僅保留抓取滑動
             document.querySelectorAll('.scrollable-content').forEach(el => {
                 el.addEventListener('wheel', (e) => e.preventDefault(), { passive: false });
             });
