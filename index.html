@@ -86,7 +86,6 @@
         .phone-mockup::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 38px; z-index: 0; pointer-events: none; }
         .dynamic-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 85px; height: 20px; background: #000; border-radius: 20px; z-index: 50; }
 
-        /* ★ 修正：將 .swiper-rich-menu 從 height: 100% 中獨立出來，不讓它撐爆畫面 ★ */
         .swiper-sns { width: 100%; height: 100%; z-index: 10; }
         .swiper-rich-menu { width: 100%; z-index: 10; } 
         
@@ -96,16 +95,23 @@
         .swiper-rich-menu .swiper-pagination-bullet-active { background: #333; }
 
         /* Meta 貼文樣板 */
-        .meta-post { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; color: #1c1e21; text-align: left; font-family: Helvetica, Arial, sans-serif; padding-top: 30px; }
-        .meta-header { display: flex; align-items: center; padding: 12px; }
-        .meta-avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; margin-right: 10px; object-fit: cover; }
+        .meta-post { background: #fff; width: 100%; height: 100%; display: flex; flex-direction: column; color: #1c1e21; text-align: left; font-family: Helvetica, Arial, sans-serif; padding-top: 30px; overflow-y: auto; scrollbar-width: none;}
+        .meta-post::-webkit-scrollbar { display: none; }
+        .meta-header { display: flex; align-items: center; padding: 12px; flex-shrink: 0; }
+        .meta-avatar { width: 40px; height: 40px; border-radius: 50%; background: #eee; margin-right: 10px; object-fit: cover; border: 1px solid #ddd; }
         .meta-info { flex-grow: 1; }
         .meta-name { font-weight: bold; font-size: 0.9rem; margin-bottom: 2px; }
         .meta-time { font-size: 0.75rem; color: #65676b; display: flex; align-items: center; }
         .meta-more { color: #65676b; font-weight: bold; letter-spacing: 2px; }
-        .meta-caption { padding: 0 12px 12px; font-size: 0.9rem; line-height: 1.4; }
-        .meta-image { width: 100%; max-height: 320px; object-fit: cover; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-        .meta-footer { padding: 10px 12px; margin-top: auto; padding-bottom: 40px; }
+        .meta-caption { padding: 0 12px 12px; font-size: 0.9rem; line-height: 1.5; flex-shrink: 0; }
+        .meta-caption a { color: #1877F2; text-decoration: none; }
+        .meta-image { width: 100%; max-height: 320px; object-fit: cover; border-top: 1px solid #eee; border-bottom: 1px solid #eee; flex-shrink: 0;}
+        
+        /* ★ 新增：Meta 影片框架 (鎖定 16:9 比例) ★ */
+        .meta-video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; background: #000; flex-shrink: 0;}
+        .meta-video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+        .meta-footer { padding: 10px 12px; margin-top: auto; padding-bottom: 40px; flex-shrink: 0;}
         .meta-stats { font-size: 0.8rem; color: #65676b; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
         .meta-actions { display: flex; justify-content: space-between; border-top: 1px solid #ced0d4; padding-top: 10px; color: #65676b; font-size: 0.85rem; font-weight: bold; }
         .meta-action-btn { display: flex; align-items: center; gap: 6px; cursor: pointer; }
@@ -115,7 +121,7 @@
         .line-post::-webkit-scrollbar { display: none; }
         .line-date { text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px; }
         .line-message-row { display: flex; align-items: flex-start; gap: 8px; }
-        .line-avatar { width: 36px; height: 36px; border-radius: 50%; background: #eee; object-fit: cover; flex-shrink: 0; }
+        .line-avatar { width: 36px; height: 36px; border-radius: 50%; background: #eee; object-fit: cover; flex-shrink: 0; border: 1px solid #ddd; }
         .line-bubble-group { display: flex; flex-direction: column; gap: 8px; max-width: 82%; width: 100%; }
         .line-name { font-size: 0.75rem; color: #fff; margin-bottom: 2px; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
         .line-image-bubble { width: 100%; border-radius: 16px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
@@ -223,7 +229,7 @@
 
     <section id="sns-design" class="sns-section" style="background-color: #f9fafb;">
         <h2>社群與官方帳號視覺企劃</h2>
-        <p>模擬真實手機瀏覽情境，展示雙平台動態貼文與客製化圖文選單介面。</p>
+        <p>模擬真實手機瀏覽情境，展示雙平台動態貼文與客製化圖文選單介面。<br><b>支援上下捲動與左右滑動切換。</b></p>
 
         <div class="tabs">
             <button class="tab-btn phone-tab-btn active" onclick="switchPhoneTab(event, 'tab-posts', '#f9fafb')">動態貼文企劃</button>
@@ -329,7 +335,7 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // --- ★ 3. 社群手機區塊頁籤切換邏輯 (含背景變色) ★ ---
+        // --- 3. 社群手機區塊頁籤切換邏輯 (含背景變色) ---
         function switchPhoneTab(evt, tabId, bgColor) {
             document.getElementById('sns-design').style.backgroundColor = bgColor;
             
@@ -350,24 +356,57 @@
         // --- 4. DOM 載入後執行：各區域資料生成與初始化 ---
         document.addEventListener('DOMContentLoaded', function () {
             
-            // 社群貼文資料庫
+            // ★ 全新升級：社群貼文資料庫 (包含靜態圖文與 YouTube 影片嵌入) ★
+            // 請將粉絲專頁的大頭貼上傳至 GitHub，命名為 avatar.png
             const snsData = [
+                // 第一篇：影片貼文 (YouTube 嵌入版)
+                {
+                    type: "meta-video", // 專屬的影片貼文格式
+                    avatar: "avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "剛剛 · 🌎",
+                    caption: "國外高級飯店旅宿愛用款，詢問度超高的「隱形懸浮壁掛架」來了！<br><br>【自有品牌契約客戶－限定禮遇】凡符合專案簽約資格，即能享有：<br>✔️ 隱形懸浮壁掛架：極簡設計，彷彿漂浮於牆面。<br>✔️ 無料供應：由我們全額吸收硬體成本，免費提供使用。<br><br>👇 35秒精彩影片搶先看",
+                    videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s?si=pGvjHMTZxJDHWOV-", // YouTube 嵌入網址
+                    likes: "88"
+                },
+                // 第二篇：靜態貼文 版本 1
                 {
                     type: "meta",
-                    avatar: "https://ui-avatars.com/api/?name=Brand&background=0D8ABC&color=fff", 
-                    name: "Janet Jodeline",
-                    time: "10 hrs",
-                    caption: "This is a facebook regular image post mockup as viewed from a mobile device. Add your own text here and drag and drop your image below.",
-                    imgSrc: "你的FB設計圖.jpg", 
-                    likes: "62 Likes"
+                    avatar: "avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "2小時前 · 🌎",
+                    caption: "開工大吉～～等等…三天連假馬上就要來了！<br>動作快！春節連假後想補充就趁現在，因為連假期間我們不出貨喔！<br>不想營業開天窗，好好把握最後機會！<br>⚠️ 連假期間暫停物流業，連假前到貨請務必向門市人員確認時間唷！<br>🏃 立刻聯繫我們下單!<br><br>或前往官網看看我們最新的【隱形懸浮壁掛瓶】吧～<br>隱藏式支架搭配簡約公版設計，讓您的浴室風格煥然一新✨<br>👉 點擊下面連結查看產品詳細<br><a href='https://reurl.cc/W8ZppO' target='_blank'>https://reurl.cc/W8ZppO</a>",
+                    imgSrc: "post1.jpg", // 準備上傳的貼文圖片檔名
+                    likes: "128"
                 },
+                // 第三篇：靜態貼文 版本 2
+                {
+                    type: "meta",
+                    avatar: "avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "昨天上午 10:00 · 🌎",
+                    caption: "【新品入荷｜SPA整復按摩推拿用品】<br><br>不只飯店備品，我們開始提供SPA整復按摩推拿用品囉～<br>方便的一站式採購，輕鬆解決冗長的購買決策。<br>最挺你的營業支援就找三隆國際，我們有：<br><br>🔹 星級飯店毛浴巾：厚薄款式豐富齊全，將星級的親膚觸感帶進您的店裡。<br>🔹 橄欖雪松精華系列：添加精華的按摩油與乳液，質地好推不油膩；沉穩木質調香氛，升級感官體驗。<br>🔹 自有品牌清潔劑：高CP值選擇，無論玻璃地面廁所廚房甚至洗衣一應俱全，全方位顧好您的門面。<br>🔹 客製化營支用品：將品牌客製在用品上，展現專業形象，打造亮眼的專屬風格。<br><br>我們販售的不僅是用品，更是長期的團隊支援💪<br>立即聯繫我們，或點擊下方網址瞭解更多細節：<br>🌐 官網探索： <a href='https://www.sy-hotelsupplies.com/' target='_blank'>https://www.sy-hotelsupplies.com/</a><br>📞 免付費訂購專線： 0800 335 666",
+                    imgSrc: "post2.jpg", 
+                    likes: "256"
+                },
+                // 第四篇：靜態貼文 版本 3
+                {
+                    type: "meta",
+                    avatar: "avatar.png", 
+                    name: "山陽產業集團｜三隆國際｜三立飯店用品",
+                    time: "2月23日上午 9:00 · 🌎",
+                    caption: "🧨 新春恭喜！迎接充滿活力的 2026 丙午馬年 🐴<br>祝福各位新的一年龍馬精神、事業萬馬奔騰，業績與財運都一馬當先！<br><br>⚠️ 溫馨提醒： 為了讓各位都能在年前順利備貨 ，歡迎洽詢各門市人員 🙋‍♀️ 以獲取「年前最後叫貨與出貨截止時間」的資訊喔！<br><br>感謝大家一整年的支持，我們年後見👋",
+                    imgSrc: "post3.jpg", 
+                    likes: "312"
+                },
+                // 第五篇：LINE 原生貼文
                 {
                     type: "line",
-                    avatar: "你的頭像圖片.jpg", 
+                    avatar: "avatar.png", 
                     name: "山陽產業 | 三隆國際台南營業處",
                     date: "今天 10:00",
                     messages: [
-                        { type: "image", imgSrc: "你的慶元宵圖片檔名.jpg" },
+                        { type: "image", imgSrc: "line-post.jpg" }, // 替換為你的慶元宵圖片檔名
                         { type: "text", text: "過了元宵，年就算真正過完了 🏮<br><br>無論這陣子檔期多忙碌，別忘了留點時間給自己和家人，好好坐下來吃碗熱騰騰的湯圓與元宵吧 🥣✨<br><br>三隆國際在此祝各位業界的好朋友們，<br>元宵佳節愉快！<br>新的一年平安順心，生意興隆人團圓 🧧" }
                     ]
                 }
@@ -378,12 +417,13 @@
             
             let generatedHtml = '';
             snsData.forEach(post => {
+                // 渲染：一般圖片 Meta 貼文
                 if (post.type === 'meta') {
                     generatedHtml += `
                         <div class="swiper-slide">
                             <div class="meta-post">
                                 <div class="meta-header">
-                                    <img src="${post.avatar}" class="meta-avatar" alt="avatar" onerror="this.style.display='none'">
+                                    <img src="${post.avatar}" class="meta-avatar" alt="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Brand&background=0D8ABC&color=fff'">
                                     <div class="meta-info">
                                         <div class="meta-name">${post.name}</div>
                                         <div class="meta-time">${post.time}</div>
@@ -395,15 +435,46 @@
                                 <div class="meta-footer">
                                     <div class="meta-stats">👍 ${post.likes}</div>
                                     <div class="meta-actions">
-                                        <div class="meta-action-btn">👍 Like</div>
-                                        <div class="meta-action-btn">💬 Comment</div>
-                                        <div class="meta-action-btn">↗️ Share</div>
+                                        <div class="meta-action-btn">👍 讚</div>
+                                        <div class="meta-action-btn">💬 留言</div>
+                                        <div class="meta-action-btn">↗️ 分享</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     `;
-                } else if (post.type === 'line') {
+                } 
+                // ★ 全新渲染：影片 Meta 貼文 ★
+                else if (post.type === 'meta-video') {
+                    generatedHtml += `
+                        <div class="swiper-slide">
+                            <div class="meta-post">
+                                <div class="meta-header">
+                                    <img src="${post.avatar}" class="meta-avatar" alt="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Brand&background=0D8ABC&color=fff'">
+                                    <div class="meta-info">
+                                        <div class="meta-name">${post.name}</div>
+                                        <div class="meta-time">${post.time}</div>
+                                    </div>
+                                    <div class="meta-more">•••</div>
+                                </div>
+                                <div class="meta-caption">${post.caption}</div>
+                                <div class="meta-video-wrapper">
+                                    <iframe src="${post.videoUrl}" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                </div>
+                                <div class="meta-footer">
+                                    <div class="meta-stats">👍 ${post.likes}</div>
+                                    <div class="meta-actions">
+                                        <div class="meta-action-btn">👍 讚</div>
+                                        <div class="meta-action-btn">💬 留言</div>
+                                        <div class="meta-action-btn">↗️ 分享</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                // 渲染：LINE 貼文
+                else if (post.type === 'line') {
                     let messagesHtml = '';
                     post.messages.forEach(msg => {
                         if (msg.type === 'text') {
@@ -418,7 +489,7 @@
                             <div class="line-post">
                                 <div class="line-date">${post.date}</div>
                                 <div class="line-message-row">
-                                    <img src="${post.avatar}" class="line-avatar" alt="avatar" onerror="this.style.display='none'">
+                                    <img src="${post.avatar}" class="line-avatar" alt="avatar" onerror="this.src='https://ui-avatars.com/api/?name=LINE&background=00B900&color=fff'">
                                     <div class="line-bubble-group">
                                         <div class="line-name">${post.name}</div>
                                         ${messagesHtml}
@@ -470,9 +541,9 @@
                 pagination: { el: '.swiper-redesign .swiper-pagination', clickable: true }
             });
 
+            // 將社群手機改為滑動不要自動輪播，方便觀看影片與長文
             const swiperSns = new Swiper('.swiper-sns', {
                 grabCursor: true, spaceBetween: 0, loop: true, 
-                autoplay: { delay: 5000, disableOnInteraction: false }, 
                 pagination: { el: '.swiper-sns .swiper-pagination', clickable: true },
                 observer: true,       
                 observeParents: true
