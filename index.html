@@ -86,7 +86,10 @@
         .phone-mockup::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 38px; z-index: 0; pointer-events: none; }
         .dynamic-island { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 85px; height: 20px; background: #000; border-radius: 20px; z-index: 50; }
 
-        .swiper-sns, .swiper-rich-menu { width: 100%; height: 100%; z-index: 10; }
+        /* ★ 修正：將 .swiper-rich-menu 從 height: 100% 中獨立出來，不讓它撐爆畫面 ★ */
+        .swiper-sns { width: 100%; height: 100%; z-index: 10; }
+        .swiper-rich-menu { width: 100%; z-index: 10; } 
+        
         .swiper-sns .swiper-slide { background: #fff; }
         .swiper-sns .swiper-pagination-bullet { background: #000; opacity: 0.2; }
         .swiper-sns .swiper-pagination-bullet-active { background: #000; opacity: 0.8; }
@@ -119,7 +122,7 @@
         .line-image-bubble img { width: 100%; display: block; object-fit: cover; }
         .line-text-bubble { background: #fff; padding: 12px 16px; border-radius: 18px; border-top-left-radius: 4px; font-size: 0.95rem; color: #111; width: fit-content; line-height: 1.5; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
-        /* Web App 互動專案區塊 (共用 Tabs 樣式) */
+        /* Web App 互動專案區塊 */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
         .interactive-section h2 { margin-bottom: 10px; font-size: 2rem; }
         .interactive-section p { margin-bottom: 30px; color: #666; }
@@ -241,17 +244,20 @@
             <div class="phone-mockup">
                 <div class="dynamic-island"></div>
                 <div class="line-screen" style="width: 100%; height: 100%; background: #8bacd1; border-radius: 38px; position: relative; overflow: hidden;">
+                    
                     <div style="padding: 60px 15px 0;">
                         <div class="line-date" style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.75rem; margin-bottom: 15px;">今天 10:00</div>
                         <div class="line-text-bubble" style="background: #fff; padding: 12px 16px; border-radius: 16px; border-top-left-radius: 4px; font-size: 0.85rem; width: fit-content; margin-top: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
-                            歡迎！請滑動下方選單查看各項服務 👇
+                            歡迎！請左右滑動下方選單查看各項服務 👇
                         </div>
                     </div>
+                    
                     <div class="swiper swiper-rich-menu" style="position: absolute; bottom: 0; left: 0; width: 100%; padding-bottom: 25px; background: #fff; box-shadow: 0 -4px 15px rgba(0,0,0,0.1);">
                         <div class="swiper-wrapper" id="rich-menu-wrapper">
                             </div>
                         <div class="swiper-pagination" style="bottom: 5px;"></div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -325,22 +331,18 @@
 
         // --- ★ 3. 社群手機區塊頁籤切換邏輯 (含背景變色) ★ ---
         function switchPhoneTab(evt, tabId, bgColor) {
-            // 切換區塊背景色
             document.getElementById('sns-design').style.backgroundColor = bgColor;
             
-            // 隱藏所有手機頁籤內容
             let tabContents = document.getElementsByClassName("phone-tab-content");
             for (let i = 0; i < tabContents.length; i++) {
                 tabContents[i].classList.remove("active");
             }
             
-            // 移除所有按鈕的 active 狀態
             let tabLinks = document.getElementsByClassName("phone-tab-btn");
             for (let i = 0; i < tabLinks.length; i++) {
                 tabLinks[i].classList.remove("active");
             }
             
-            // 顯示當前點擊的頁籤與按鈕狀態
             document.getElementById(tabId).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
@@ -472,7 +474,7 @@
                 grabCursor: true, spaceBetween: 0, loop: true, 
                 autoplay: { delay: 5000, disableOnInteraction: false }, 
                 pagination: { el: '.swiper-sns .swiper-pagination', clickable: true },
-                observer: true,       // 確保在 hidden 狀態下切換顯示時能重新計算尺寸
+                observer: true,       
                 observeParents: true
             });
 
@@ -480,7 +482,7 @@
                 grabCursor: true, loop: true, spaceBetween: 0,
                 autoplay: { delay: 4000, disableOnInteraction: false },
                 pagination: { el: '.swiper-rich-menu .swiper-pagination', clickable: true },
-                observer: true,       // 確保在 hidden 狀態下切換顯示時能重新計算尺寸
+                observer: true,       
                 observeParents: true
             });
 
