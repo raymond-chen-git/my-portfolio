@@ -384,22 +384,46 @@
         }
 
         document.addEventListener('DOMContentLoaded', function () {
-            
-            // --- ★ 產品型錄資料庫 (載入本地資料夾) ★ ---
+            // --- ★ 產品型錄資料庫 (載入本地 works 資料夾) ★ ---
             const projectsData = [
-                { title: "旅用盥洗包說明設計", category: "排版與包裝設計", desc: "結合品牌調性與實用性，重新梳理資訊層級，讓使用者能快速理解產品特點與使用方式。", imgSrc: "portfolio/work-01.jpg" },
-                { title: "高級飯店備品型錄", category: "商業型錄排版", desc: "採用極簡留白排版與高質感情境圖，提升品牌在 B2B 提案時的專業度與信賴感。", imgSrc: "portfolio/work-02.jpg" },
-                { title: "質感洗沐系列視覺", category: "產品情境視覺", desc: "利用光影與材質對比，營造放鬆且高級的沐浴氛圍，強化產品在社群上的視覺吸引力。", imgSrc: "portfolio/work-03.jpg" },
-                { title: "品牌識別設計手冊", category: "品牌視覺包裝", desc: "從 Logo 延伸至各項周邊應用的完整規範，確保品牌在不同媒介上的視覺一致性。", imgSrc: "portfolio/work-04.jpg" }
+                { 
+                    title: "Hunter Amenities 商業型錄", 
+                    category: "Editorial Design / 編輯排版", 
+                    desc: "為解決過去 B2B 提案時「缺乏精品視覺」的痛點，本次改版導入嚴謹的網格系統與留白美學。將傳統型錄全面升級為國際雜誌規格，完美襯托頂級備品的品牌價值。", 
+                    coverImg: "works/work-01-cover.jpg",  // 網格顯示的小圖 (建議用 work-01 改名)
+                    boardImg: "works/work-01-board.png"   // 點擊彈出的長圖 (裡面可放 work-03 等排版細節)
+                },
+                { 
+                    title: "旅用盥洗包說明設計", 
+                    category: "排版與包裝設計", 
+                    desc: "結合品牌調性與實用性，重新梳理資訊層級，讓使用者能快速理解產品特點與使用方式。", 
+                    coverImg: "works/washbag-cover.jpg",
+                    boardImg: "works/washbag-board.jpg" 
+                },
+                { 
+                    title: "質感洗沐系列視覺", 
+                    category: "產品情境視覺", 
+                    desc: "利用光影與材質對比，營造放鬆且高級的沐浴氛圍，強化產品在社群上的視覺吸引力。", 
+                    coverImg: "works/bath-visual-cover.jpg",
+                    boardImg: "works/bath-visual-board.jpg" 
+                },
+                { 
+                    title: "品牌識別設計手冊", 
+                    category: "品牌視覺包裝", 
+                    desc: "從 Logo 延伸至各項周邊應用的完整規範，確保品牌在不同媒介上的視覺一致性。", 
+                    coverImg: "works/branding-cover.jpg",
+                    boardImg: "works/branding-board.jpg" 
+                }
             ];
             
             const grid = document.getElementById('portfolio-grid');
             if (grid) {
                 grid.innerHTML = '';
                 projectsData.forEach(function(item) {
+                    // 這裡更新了邏輯：img src 讀取 coverImg，而 onclick 燈箱讀取 boardImg
                     grid.innerHTML += `
-                        <div class="project-card" onclick="openLightbox('${item.imgSrc}')">
-                            <img src="${item.imgSrc}" alt="${item.title}" class="project-image" onerror="this.src='https://placehold.co/600x400/eee/999?text=Image+Coming+Soon'">
+                        <div class="project-card" onclick="openLightbox('${item.boardImg}')">
+                            <img src="${item.coverImg}" alt="${item.title}" class="project-image" onerror="this.src='https://placehold.co/600x400/eee/999?text=Image+Coming+Soon'">
                             <div class="project-info">
                                 <p class="project-category">${item.category}</p>
                                 <h3>${item.title}</h3>
@@ -408,7 +432,6 @@
                         </div>`;
                 });
             }
-
             // 社群貼文資料庫 (精簡保留)
             const snsData = [
                 { type: "meta-video", avatar: "sns-posts/avatar.png", name: "山陽產業集團", time: "剛剛 · 🌎", caption: "35秒影片搶先看", videoUrl: "https://www.youtube.com/embed/YSjs1NwxX3s", likes: "88" },
