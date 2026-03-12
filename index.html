@@ -166,12 +166,31 @@
         .line-image-bubble img { width: 100%; display: block; object-fit: cover; }
         .line-text-bubble { background: #fff; padding: 12px 16px; border-radius: 18px; border-top-left-radius: 4px; font-size: 0.95rem; color: #111; width: fit-content; line-height: 1.5; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 
-        /* Web App 互動專案區塊 */
+/* Web App 互動專案區塊 */
         .interactive-section { padding: 80px 5%; background: #EFEFEF; text-align: center; }
         .interactive-section h2 { margin-bottom: 10px; font-size: 2rem; }
         .interactive-section p { margin-bottom: 30px; color: #666; }
         .tabs { margin-bottom: 30px; display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; }
         .tab-btn { padding: 10px 25px; cursor: pointer; border: 2px solid #000; background: transparent; border-radius: 30px; font-weight: bold; font-size: 1rem; transition: all 0.3s ease; }
+        
+        /* ★ 新增：手機版頁籤改為橫向滑動，解決積木堆疊問題 ★ */
+        @media (max-width: 768px) {
+            .interactive-section .tabs { 
+                justify-content: flex-start; /* 靠左對齊 */
+                flex-wrap: nowrap;           /* 強制不換行 */
+                overflow-x: auto;            /* 開啟橫向捲動 */
+                scrollbar-width: none;       /* 隱藏捲軸(Firefox) */
+                -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更順暢 */
+                padding-bottom: 10px;        /* 預留一點底部空間 */
+            }
+            .interactive-section .tabs::-webkit-scrollbar { display: none; } /* 隱藏捲軸(Chrome/Safari) */
+            .interactive-section .tab-btn { 
+                flex-shrink: 0;              /* 確保按鈕不會被擠壓變形 */
+                white-space: nowrap;         /* 確保文字不換行 */
+                font-size: 0.9rem;           /* 手機版字體微調 */
+                padding: 8px 18px;           /* 手機版按鈕內距微調 */
+            }
+        }
         .tab-btn.active, .tab-btn:hover { background: #000; color: #fff; }
 /* 將 height 從 650px 放寬到 750px，解決 iframe 內容被切底的問題 */
         .tab-content { display: none; width: 100%; max-width: 900px; margin: 0 auto; height: 750px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 4px solid #fff; background: #fff;}
