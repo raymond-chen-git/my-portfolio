@@ -99,6 +99,11 @@
 
         /* ★ 修復：強烈舊化效果 ★ */
         .comparison-box { /* 加強舊化效果：完全灰度、更暗、低對比度、更模糊 */ filter: grayscale(100%) brightness(40%) contrast(80%) blur(5px); transform: scale(0.9); opacity: 0.8; }
+
+/* ★ BEFORE 專用：永久舊化濾鏡 (完全灰階、微泛黃、降低亮度對比) ★ */
+        .comparison-img.old-version { 
+            filter: grayscale(100%) sepia(25%) brightness(75%) contrast(85%); 
+        }
         
         /* 活性幻燈片效果，確保清晰呈現 */
         .swiper-slide-active .comparison-box { filter: grayscale(0%) brightness(100%) contrast(100%) blur(0px); transform: scale(1.05); opacity: 1; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
@@ -258,7 +263,7 @@
                         <div class="comparison-box">
                             <div class="comparison-label">Before / 修改前</div>
                             <div class="a4-ratio-wrapper">
-                                <img src="images/wix-before.png?v=1.1" alt="修改前舊網頁" class="comparison-img">
+                                <img src="images/wix-before.png?v=1.1" alt="修改前舊網頁" class="comparison-img old-version">
                             </div>
                         </div>
                     </div>
