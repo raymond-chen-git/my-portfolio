@@ -91,22 +91,17 @@
         @media (max-width: 768px) { .a4-ratio-wrapper { height: 900px; } }
         .comparison-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
         
-        /* ★ 修復：BEFORE 標籤更醒目 ★ */
+        /* ★ 修復：BEFORE 標籤變回醒目橙色 ★ */
         .comparison-label { position: absolute; top: 15px; left: 15px; background: rgba(255, 69, 0, 0.9); /* 鮮豔橙色 */ border: 2px solid #fff; color: #fff; padding: 8px 18px; border-radius: 20px; font-weight: bold; font-size: 0.85rem; z-index: 10; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
         
-        /* AFTER 標籤可以維持原本顏色或稍微調整以區分 */
+        /* AFTER 標籤可以維持原本顏色 */
         .comparison-label.redesign-after-label { background: rgba(0, 128, 0, 0.9); /* 綠色 */ }
 
-        /* ★ 修復：強烈舊化效果 ★ */
-        .comparison-box { /* 加強舊化效果：完全灰度、更暗、低對比度、更模糊 */ filter: grayscale(100%) brightness(40%) contrast(80%) blur(5px); transform: scale(0.9); opacity: 0.8; }
-
-/* ★ BEFORE 專用：永久舊化濾鏡 (完全灰階、微泛黃、降低亮度對比) ★ */
-        .comparison-img.old-version { 
-            filter: grayscale(100%) sepia(25%) brightness(75%) contrast(85%); 
-        }
+        /* ★ 修復：移除所有舊化濾鏡，確保 Before 和 After 都是清晰的 彩色 畫面 ★ */
+        .comparison-box { transform: scale(0.9); opacity: 0.8; }
         
-        /* 活性幻燈片效果，確保清晰呈現 */
-        .swiper-slide-active .comparison-box { filter: grayscale(0%) brightness(100%) contrast(100%) blur(0px); transform: scale(1.05); opacity: 1; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+        /* 活性幻燈片效果，確保清晰呈現 (移除了 grayscale、brightness、contrast、blur) */
+        .swiper-slide-active .comparison-box { transform: scale(1.05); opacity: 1; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
         
         .swiper-button-next, .swiper-button-prev { color: #333; }
         .swiper-redesign .swiper-pagination-bullet-active { background: #333; }
@@ -263,7 +258,7 @@
                         <div class="comparison-box">
                             <div class="comparison-label">Before / 修改前</div>
                             <div class="a4-ratio-wrapper">
-                                <img src="images/wix-before.png?v=1.1" alt="修改前舊網頁" class="comparison-img old-version">
+                                <img src="images/wix-before.png?v=1.2" alt="修改前舊網頁" class="comparison-img">
                             </div>
                         </div>
                     </div>
@@ -516,7 +511,7 @@
                     avatar: "sns-posts/avatar.png", 
                     name: "山陽產業集團｜三隆國際｜三立飯店用品",
                     time: "2月23日上午 9:00 · 🌎",
-                    caption: "🧨 新春恭喜！迎接充滿活力的 2026 丙午馬年 🐴<br>祝福各位新的一年龍馬精神、事業萬馬奔騰，業績與財運都一馬當先！<br><br>⚠️ 溫馨提醒： 為了讓各位都能在年前順利備貨 ，歡迎洽詢各門市人員 🙋‍♀️ 以獲取「年前最後叫貨與出貨截止時間」的資訊喔！<br><br>感謝大家一整年的支持，我們年後見👋",
+                    caption: "🧨 新春恭喜！迎接充滿活力的 2026 丙午馬年 🐴<br>祝福各位新的一年龍馬精神、事業萬馬奔騰，业績與財運都一馬當先！<br><br>⚠️ 溫馨提醒： 為了讓各位都能在年前順利備貨 ，歡迎洽詢各門市人員 🙋‍♀️ 以獲取「年前最後叫貨與出貨截止時間」的資訊喔！<br><br>感謝大家一整年的支持，我們年後見👋",
                     images: ["sns-posts/02.png"], 
                     likes: "312"
                 },
@@ -525,7 +520,7 @@
                     avatar: "sns-posts/avatar.png", 
                     name: "山陽產業集團｜三隆國際｜三立飯店用品",
                     time: "2月23日上午 9:00 · 🌎",
-                    caption: "🧨 新春恭喜！迎接充滿活力的 2026 丙午馬年 🐴<br>祝福各位新的一年龍馬精神、事業萬馬奔騰，業績與財運都一馬當先！<br><br>⚠️ 溫馨提醒： 為了讓各位都能在年前順利備貨 ，歡迎洽詢各門市人員 🙋‍♀️ 以獲取「年前最後叫貨與出貨截止時間」的資訊喔！<br><br>感謝大家一整年的支持，我們年後見👋",
+                    caption: "🧨 新春恭喜！迎接充滿活力的 2026 丙午馬年 🐴<br>祝福各位新的一年龍馬精神、事業萬馬奔騰，业績與財運都一馬當先！<br><br>⚠️ 溫馨提醒： 為了讓各位都能在年前順利備貨 ，歡迎洽詢各門市人員 🙋‍♀️ 以獲取「年前最後叫貨與出貨截止時間」的資訊喔！<br><br>感謝大家一整年的支持，我們年後見👋",
                     images: ["sns-posts/03.png"], 
                     likes: "312"
                 },
